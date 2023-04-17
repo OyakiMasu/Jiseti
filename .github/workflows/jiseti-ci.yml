@@ -1,0 +1,20 @@
+name: JISETI
+# conditions that trigger this action
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+# functions that will run within the workflow - all jobs run in parallel (triggered at the same time)
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.4'
+      - run: cd api && bundle install
+      - run: cd api && bundle exec rails db:migrate RAILS_ENV=test
+      - run: cd api && bundle exec rspec spec
