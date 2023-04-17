@@ -1,4 +1,4 @@
-name: JISETI
+name: JISETICI
 # conditions that trigger this action
 on:
   workflow_dispatch:
