@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :intervention_records
   resources :red_flag_records
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
