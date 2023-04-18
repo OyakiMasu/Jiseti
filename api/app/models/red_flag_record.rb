@@ -1,0 +1,2 @@
+class RedFlagRecord < ApplicationRecord
+end
