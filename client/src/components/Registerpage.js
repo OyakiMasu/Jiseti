@@ -36,7 +36,7 @@ function Registerpage() {
             <div className="signup">
 
                 <form className="regnav" onSubmit={e => handleAdd(e)}>
-                    <input type="hidden" name="movie[user_id]" value="<%= @user.id %>"></input>
+                
                                     <h3>signup</h3>
 
                     <label>firstname:</label>
