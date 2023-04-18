@@ -5,8 +5,8 @@ class CreateInterventionRecords < ActiveRecord::Migration[7.0]
       t.text :title
       t.text :description
       t.text :image_url
-      t.decimal :latitude
-      t.decimal :longitude
+      t.decimal :latitude, precision: 10, scale: 6
+      t.decimal :longitude, precision: 10, scale: 6
       t.integer :status
 
       t.timestamps

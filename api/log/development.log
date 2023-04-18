@@ -1,0 +1,58 @@
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRedFlagRecords (20230418122717)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "title" text, "description" text, "image_url" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230418122717"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateInterventionRecords (20230418122838)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "title" text, "description" text, "image_url" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230418122838"]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20230418123009)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230418123009"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 12:41:50.618872"], ["updated_at", "2023-04-18 12:41:50.618872"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "johndoe"], ["password_digest", "[FILTERED]"], ["email", "johndoe@example.com"], ["user_type", 1], ["created_at", "2023-04-18 12:42:35.031878"], ["updated_at", "2023-04-18 12:42:35.031878"]]
+  [1m[36mTRANSACTION (21.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "janedoe"], ["password_digest", "[FILTERED]"], ["email", "janedoe@example.com"], ["user_type", 2], ["created_at", "2023-04-18 12:42:35.058494"], ["updated_at", "2023-04-18 12:42:35.058494"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "bobsmith"], ["password_digest", "[FILTERED]"], ["email", "bobsmith@example.com"], ["user_type", 2], ["created_at", "2023-04-18 12:42:35.079462"], ["updated_at", "2023-04-18 12:42:35.079462"]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["title", "Pothole on Main Street"], ["description", "Large pothole in the middle of Main Street"], ["image_url", "https://example.com/images/pothole.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 1], ["created_at", "2023-04-18 12:42:35.123542"], ["updated_at", "2023-04-18 12:42:35.123542"]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["title", "Broken Traffic Light"], ["description", "Traffic light at intersection of Elm and Maple is not working"], ["image_url", "https://example.com/images/traffic-light.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 2], ["created_at", "2023-04-18 12:42:35.142942"], ["updated_at", "2023-04-18 12:42:35.142942"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["title", "Flooded Street"], ["description", "Heavy rain has caused flooding on Maple Street"], ["image_url", "https://example.com/images/flood.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 1], ["created_at", "2023-04-18 12:42:35.160968"], ["updated_at", "2023-04-18 12:42:35.160968"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["title", "Suspicious Activity"], ["description", "Saw a group of people acting suspiciously behind the convenience store"], ["image_url", "https://example.com/images/suspicious.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 1], ["created_at", "2023-04-18 12:42:35.188419"], ["updated_at", "2023-04-18 12:42:35.188419"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["title", "Vandalism in the Park"], ["description", "Graffiti on the benches in the park"], ["image_url", "https://example.com/images/graffiti.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 2], ["created_at", "2023-04-18 12:42:35.202904"], ["updated_at", "2023-04-18 12:42:35.202904"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("user_id", "title", "description", "image_url", "latitude", "longitude", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 3], ["title", "Loud Music"], ["description", "Neighbors are playing loud music late at night"], ["image_url", "https://example.com/images/music.jpg"], ["latitude", 40.7128], ["longitude", -74.006], ["status", 1], ["created_at", "2023-04-18 12:42:35.225767"], ["updated_at", "2023-04-18 12:42:35.225767"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
