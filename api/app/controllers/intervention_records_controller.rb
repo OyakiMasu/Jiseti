@@ -1,12 +1,16 @@
 class InterventionRecordsController < ApplicationController
   before_action :set_intervention_record, only: %i[ show update destroy ]
-
   # GET /intervention_records
   # GET /intervention_records.json
   def index
     @intervention_records = InterventionRecord.all
+    respond_to do |format|
+      format.json { render json: @intervention_records }
+      format.html # Render HTML view
+      format.xml { render xml: @intervention_records } # Render XML view
+      # Add other formats as needed
+    end
   end
-
   # GET /intervention_records/1
   # GET /intervention_records/1.json
   def show
