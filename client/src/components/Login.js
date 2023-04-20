@@ -22,7 +22,7 @@ function Login() {
     .then((data) => {
           if (data.message === "Login success!") {
           alert(data.message)
-          navigate("/dashboard")
+          navigate("/report")
         } else if (data.message === "Invalid email or password"){
             alert(data.message)
             redirect('/login')
@@ -31,15 +31,21 @@ function Login() {
 
     return(
 
-        <div className="login">
-            <form onSubmit={e => handleSubmit(e)}>
-                <h3>Login</h3>
+        <div >
+            <form className="login"  onSubmit={e => handleSubmit(e)}>
+
+                <h3 className="title">Login</h3>
+
                 <label><b>Email</b></label>
-                <input type="text" placeholder="email" value={user_email} onChange={e => SetUser_email(e.target.value)} required></input>
+                <input className="loginput" type="text" placeholder="email" value={user_email} onChange={e => SetUser_email(e.target.value)} required></input>
                 <label><b>Password</b></label>
                     
-                <input type="text" placeholder="password." value={user_password} onChange={e => SetUser_password(e.target.value)} required></input>
-                    <input type="submit" ></input>
+                <input className="loginput" type="text" placeholder="password." value={user_password} onChange={e => SetUser_password(e.target.value)} required></input>
+
+                    <input className="button" type="submit" ></input>
+
+                    <a href="/registerpage">Signup</a>
+
              </form>
         </div>
 

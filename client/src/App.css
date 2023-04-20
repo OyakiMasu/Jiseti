@@ -11,6 +11,10 @@
 input{
   display: block;
   text-align: center;
+  height: 2.5em;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
 }
 .bottom{
   position: absolute;
@@ -43,13 +47,13 @@ input{
   width: 176px;
   height: 57px;
   left: 102px;
-  top: 92px;
-
+  
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 800;
   font-size: 60px;
   line-height: 66px;
+  cursor: pointer;
 }
 .more{
   position: absolute;
@@ -70,13 +74,109 @@ input{
 }
 .top{
   text-align: end;
-}
+  font-size: 22px;
 
-/* login page */
+}
+.signup,.loginlink,.report{
+  text-decoration: none;
+}
+.button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+
+}
+/* .regnav{
+
+} */
+
+        /* LOGIN PAGE */
+
 .login{
   width: 450px;
   height: 500px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 20%;
+  margin-top: 10%;
   text-align: center;
+  /* From https://css.glass */
+/* background: rgba(121, 113, 108, 0.22); */
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2.8px);
+-webkit-backdrop-filter: blur(2.8px);
+border: 1px solid rgba(121, 113, 108, 0.3);
+}
+.title{
+  font-size: 24px;
+  line-height: 66px;
+  padding-top: 10%;
+  background-color: none;
+}
+.loginput{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+     /* SIGUP PAGE */
+
+.signup{
+  width: 450px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: 20%;
+  margin-top: 10%;
+  text-align: center;
+  /* From https://css.glass */
+  /* background: rgba(121, 113, 108, 0.22); */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.8px);
+  -webkit-backdrop-filter: blur(2.8px);
+  border: 1px solid rgba(121, 113, 108, 0.3);
+
+}
+
+        /* REPORT PAGE */
+.imgtag{
+  width: 700px;
+  margin-left: auto;
+}
+.cardtitle{
+ width: 500px;
+ font-size: 22px;
+}
+.reportlink{
+  position: absolute;
+width: 87px;
+height: 66px;
+left: 1232px;
+top: 30%;
+
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 66px;
+}
+
+/* ABOUT PAGE */
+
+.bgimage{
+  position: absolute;
+width: 800px;
+height: 100vh;
+left: 0px;
+top: 0px;
+/* background-image: url(/about.jpg);  */
+}
+.about{
+  margin-left: 800px;
+  position: absolute;
+  line-height: 66px;
+  font-weight: 800;
+  font-size: 20px;
 }

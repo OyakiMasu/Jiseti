@@ -17,6 +17,8 @@ Jiseti is a simple web-based application where a user has the ability to report 
  - Rails
 
 # Authors and Support
+This project was contributed by
+
 - [Zaki Mathu](https://github.com/OyakiMasu)
 - [Fred Murigi](https://github.com/freddie16)
 - [Tevin Gichoya](https://github.com/ittstevin)

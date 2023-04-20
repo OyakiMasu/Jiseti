@@ -24,7 +24,7 @@ function Registerpage() {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        navigate("/dashboard")
+        navigate("/report")
     })
     .catch(error => console.error(error))
     }
@@ -32,28 +32,29 @@ function Registerpage() {
 
     return(
 
-      <center>
-            <div className="signup">
+            <div>
 
-                <form className="regnav" onSubmit={e => handleAdd(e)}>
+                <form className="signup" onSubmit={e => handleAdd(e)}>
                 
-                                    <h3>signup</h3>
+                     <h3 className="title">signup</h3>
 
                     <label>firstname:</label>
-                    <input type="text" value={first} onChange={e => SetFirst(e.target.value)} required></input>
+                    <input  className="loginput"  type="text" value={first} onChange={e => SetFirst(e.target.value)}required></input>
 
                     <label>lastname:</label>
-                    <input type="text" value={last} onChange={e => SetLast(e.target.value)} required></input>
+                    <input  className="loginput"  type="text" value={last} onChange={e => SetLast(e.target.value)} required></input>
 
                     <label>Email:</label>
-                    <input type="text" value={mail} onChange={e => SetMail(e.target.value)} required></input>
+                    <input  className="loginput" type="text" value={mail} onChange={e => SetMail(e.target.value)} required></input>
 
                     <label>Password:</label>
-                    <input type="text" placeholder="Password" value={pass} onChange={e => SetPass(e.target.value)} required></input>
-                    <input type="submit" value="Add User" required></input>
+                    <input  className="loginput"  type="text" placeholder="Password" value={pass} onChange={e => SetPass(e.target.value)} required></input>
+
+                    <input className="button"  type="submit" value="Add User" required></input>
+                    
+                    <a href="/login">Login</a>
                 </form>
             </div>
-      </center>  
 
     )
 }
