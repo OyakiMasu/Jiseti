@@ -1,5 +1,8 @@
 class InterventionRecordsController < ApplicationController
-    
+        #Authorization
+        before_action :authorize, only: [:create, :update, :destroy]
+        before_action :authorize_unauthenticated, only: [:index, :show]
+
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -17,39 +20,52 @@ class InterventionRecordsController < ApplicationController
 
     end
 
-     # POST /intervention_records
-     def create
-        intervention_record = InterventionRecord.create(intervention_record_params)
+    # POST /intervention_records
+    def create
+        intervention_record = InterventionRecord.new(intervention_record_params)
+            intervention_record.user = current_user
         if intervention_record.save
-          render json: intervention_record
-        else
-            render json: { error: intervention_record.errors.full_messages.to_sentence }
-        end
-          
-    end
-      
-    # PATCH /intervention_records/:id
-    def update
-        intervention_record = InterventionRecord.find(params[:id])
-        if intervention_record.update(intervention_record_params)
-            render json: intervention_record
+            render json: intervention_record, status: :created
         else
             render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
         end
     end
-
-
-    # DELETE/ intervention_records/:id
-    def destroy
+      
+    # PATCH /intervention_records/:id/ User
+    def update
         intervention_record = InterventionRecord.find(params[:id])
-        intervention_record.destroy
-        head :no_content
-    end
+        if current_user.admin? # check if current user is an admin
+          if  intervention_record.update(intervention_record_params)
+            render json:  intervention_record
+          else
+            render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
+          end
+        else # if the user is not an admin, disallow update to the status attribute
+            intervention_record_params_without_status =  intervention_record_params.except(:status)
+          if intervention_record.update(intervention_record_params_without_status)
+            render json: intervention_record
+          else
+            render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
+          end
+        end
+      end
+
+
+      def destroy
+        intervention_record = InterventionRecord.find(params[:id])
+        
+        if current_user.admin?
+          intervention_record.destroy 
+          head :no_content
+        else
+          render json: { error: "Only admin users can delete intervention records" }, , status: :forbidden
+        end
+      end
      
      private
 
      def intervention_record_params
-        params.require(:intervention_record).permit(:title, :description, :latitude, :longitude, :image_url, :user_id)
+        params.require(:intervention_record).permit(:title, :description, :latitude, :longitude, :image_url, :user_id, :status)
     end
       
 
@@ -60,5 +76,10 @@ class InterventionRecordsController < ApplicationController
     def render_unprocessable_entity
         render json: { error: "Validity errors" }, status: :unprocessable_entity
     end
+
+    def authorize_unauthenticated
+        @current_user = User.find_by(id: session[:user_id])
+        @current_user ||= User.find_by(id: payload["user_id"]) if request.headers["Authorization"].present?
+      end
 
 end
