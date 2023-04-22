@@ -58,7 +58,7 @@ class InterventionRecordsController < ApplicationController
           intervention_record.destroy 
           head :no_content
         else
-          render json: { error: "Only admin users can delete intervention records" }, , status: :forbidden
+          render json: { error: "Only admin users can delete intervention records" }, status: :forbidden
         end
       end
      

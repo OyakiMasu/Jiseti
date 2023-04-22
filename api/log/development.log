@@ -5086,3 +5086,88 @@ Processing by RedFlagRecordsController#destroy as */*
 Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1077)
 
 
+Started DELETE "/intervention_records/12" for 127.0.0.1 at 2023-04-22 14:28:34 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/student/Final-Project/Jiseti/api/app/controllers/intervention_records_controller.rb:61: syntax error, unexpected ','
+...lete intervention records" }, , status: :forbidden
+...                              ^
+):
+  
+app/controllers/intervention_records_controller.rb:61: syntax error, unexpected ','
+app/controllers/intervention_records_controller.rb:61: syntax error, unexpected ','
+app/controllers/intervention_records_controller.rb:61: syntax error, unexpected ','
+Started DELETE "/intervention_records/12" for 127.0.0.1 at 2023-04-22 14:28:53 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "id"=>"12", "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:55:in `destroy'
+Completed 404 Not Found in 40ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 23653)
+
+
+Started GET "/intervention_records" for 127.0.0.1 at 2023-04-22 14:28:59 +0300
+Processing by InterventionRecordsController#index as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:81:in `authorize_unauthenticated'
+  [1m[36mInterventionRecord Load (0.3ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:12:in `index'
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.5ms | Allocations: 19139)
+
+
+Started GET "/intervention_records/9" for 127.0.0.1 at 2023-04-22 14:29:09 +0300
+Processing by InterventionRecordsController#show as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "id"=>"9", "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:81:in `authorize_unauthenticated'
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:18:in `show'
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1233)
+
+
+Started DELETE "/intervention_records/9" for 127.0.0.1 at 2023-04-22 14:29:13 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "id"=>"9", "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:55:in `destroy'
+Completed 403 Forbidden in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1085)
+
+
+Started PATCH "/intervention_records/9" for 127.0.0.1 at 2023-04-22 14:29:18 +0300
+Processing by InterventionRecordsController#update as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "id"=>"9", "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:36:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mInterventionRecord Update (0.4ms)[0m  [1m[33mUPDATE "intervention_records" SET "title" = ?, "user_id" = ?, "updated_at" = ? WHERE "intervention_records"."id" = ?[0m  [["title", "Testing Endpoint 3 post"], ["user_id", 3], ["updated_at", "2023-04-22 11:29:18.615472"], ["id", 9]]
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+Completed 200 OK in 68ms (Views: 0.5ms | ActiveRecord: 10.8ms | Allocations: 7852)
+
+
+Started PATCH "/intervention_records/9" for 127.0.0.1 at 2023-04-22 14:29:27 +0300
+Processing by InterventionRecordsController#update as */*
+  Parameters: {"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "id"=>"9", "intervention_record"=>{"title"=>"Testing Endpoint 3 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:36:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3292)
+
+
