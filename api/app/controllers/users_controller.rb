@@ -55,7 +55,7 @@ def render_not_found_response
 end
 
 def user_params
-    params.permit(:username, :email, :password)
+    params.permit(:username, :email, :password, :user_type)
 end
 
 end
