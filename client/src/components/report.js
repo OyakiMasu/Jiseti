@@ -23,7 +23,7 @@ function Report() {
           <h2 className='cardtitle' >{article.title}</h2>
         </div>
       ))}
-          {/* <a className='reportlink' href='/reportpage'> Report</a> */}
+          <a className='reportlink' href='/reportpage'> Report</a>
 
     </center>
   );

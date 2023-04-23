@@ -24,7 +24,7 @@ function Registerpage() {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        navigate("/report")
+        navigate("/login")
     })
     .catch(error => console.error(error))
     }

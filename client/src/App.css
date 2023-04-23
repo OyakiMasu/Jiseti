@@ -75,6 +75,8 @@ input{
 .top{
   text-align: end;
   font-size: 22px;
+  display: inline-block;
+  right: 0px;
 
 }
 .signup,.loginlink,.report{
@@ -171,7 +173,7 @@ width: 800px;
 height: 100vh;
 left: 0px;
 top: 0px;
-/* background-image: url(/about.jpg);  */
+background-image: url'../assets/about.jpg'; 
 }
 .about{
   margin-left: 800px;
@@ -179,4 +181,8 @@ top: 0px;
   line-height: 66px;
   font-weight: 800;
   font-size: 20px;
+}
+.loginlink{
+  margin-right: 2em;
+  margin-top: 10px;
 }
