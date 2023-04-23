@@ -1,112 +1,96 @@
 import React, { useState } from "react";
 
-function Report() {
-  const [text, setText] = useState("");
+const Report = () => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
-  const [image, setImage] = useState(null);
-  const [severity, setSeverity] = useState("low");
+  const [image, setImage] = useState("");
+  const [priority, setPriority] = useState("");
+  const [type, setType] = useState("");
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reportObj = {
+      description,
+      date,
+      location,
+      image,
+      priority,
+      type,
+    };
+    console.log(reportObj);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
-
-  const handleLocationChange = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      setLocation(`${latitude}, ${longitude}`);
-    });
-  };
-
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
-
-  const handleSeverityChange = (event) => {
-    setSeverity(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = { text, description, date, location, image, severity };
-    console.log(formData);
+  const handleLocationClick = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        setLocation(`${lat}, ${long}`);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   return (
     <div>
-      <h1>Add a report</h1>
+      <h2>Add a Report</h2>
 
       <form onSubmit={handleSubmit}>
         <label>
-          Title:
-          <input type="text" value={text} onChange={handleTextChange} />
+          Type:
+          <select value={type} onChange={(e) => setType(e.target.value)} required>
+            <option value="">Select type</option>
+            <option value="red_flag">Red Flag</option>
+            <option value="intervention">Intervention</option>
+          </select>
         </label>
         <br />
         <label>
           Description:
-          <input type="text" value={description} onChange={handleDescriptionChange} />
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required/>
         </label>
         <br />
         <label>
           Date:
-          <input type="date" value={date} onChange={handleDateChange} />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required/>
         </label>
         <br />
-        <button type="button" onClick={handleLocationChange}>
-          Get Location
-        </button>
-        {location && <p>Location: {location}</p>}
+        <label>
+          Location:
+          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
+          <button type="button" onClick={handleLocationClick}>Use current location</button>
+        </label>
         <br />
         <label>
           Image:
-          <input type="file" accept="image/*" onChange={handleImageChange} />
+          <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
         </label>
         <br />
         <label>
-          Severity:
+          Priority Level:
           <br />
-          <input
-            type="radio"
-            value="low"
-            checked={severity === "low"}
-            onChange={handleSeverityChange}
-          />{" "}
-          Low
+          <input type="radio" name="priority" value="low" onChange={(e) => setPriority(e.target.value)} /> Low
           <br />
-          <input
-            type="radio"
-            value="medium"
-            checked={severity === "medium"}
-            onChange={handleSeverityChange}
-          />{" "}
-          Medium
+          <input type="radio" name="priority" value="medium" onChange={(e) => setPriority(e.target.value)} /> Medium
           <br />
-          <input
-            type="radio"
-            value="high"
-            checked={severity === "high"}
-            onChange={handleSeverityChange}
-          />{" "}
-          High
+          <input type="radio" name="priority" value="high" onChange={(e) => setPriority(e.target.value)} /> High
         </label>
         <br />
         <button type="submit">Submit</button>
       </form>
-      <a href='/report'>My Reports</a>
+      <a className='' href='/report'>My Reports</a>
 
+      {/* Display submitted form data below with edit and delete buttons */}
+      {/* TODO: Implement display and functionality for edit and delete buttons */}
     </div>
   );
-}
+};
 
 export default Report;
+
+
 
 
