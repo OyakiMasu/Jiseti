@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 const Report = () => {
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
-  const [priority, setPriority] = useState("");
+  const [status, setStatus] = useState("");
   const [type, setType] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const reportObj = {
       description,
-      date,
+      title,
       location,
       image,
-      priority,
+      status,
       type,
     };
     console.log(reportObj);
@@ -54,8 +54,8 @@ const Report = () => {
         </label>
         <br />
         <label>
-          Date:
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required/>
+        title:
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
         </label>
         <br />
         <label>
@@ -70,13 +70,13 @@ const Report = () => {
         </label>
         <br />
         <label>
-          Priority Level:
+          STATUS:
           <br />
-          <input type="radio" name="priority" value="low" onChange={(e) => setPriority(e.target.value)} /> Low
+          <input type="radio" name="status" value="under investigation" onChange={(e) => setStatus(e.target.value)} /> Under investigation
           <br />
-          <input type="radio" name="priority" value="medium" onChange={(e) => setPriority(e.target.value)} /> Medium
+          <input type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
           <br />
-          <input type="radio" name="priority" value="high" onChange={(e) => setPriority(e.target.value)} /> High
+          <input type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
         </label>
         <br />
         <button type="submit">Submit</button>
