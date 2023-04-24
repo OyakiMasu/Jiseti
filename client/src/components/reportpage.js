@@ -47,28 +47,31 @@ const Report = () => {
             <option value="intervention">Intervention</option>
           </select>
         </label>
-        <br />
+        <br/>
+        
+        <label>
+        title:
+          <input placeholder="Add title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+        </label>
+        <br/>
+
         <label>
           Description:
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} required/>
         </label>
-        <br />
-        <label>
-        title:
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
-        </label>
-        <br />
+        <br/>
+
         <label>
           Location:
           <input placeholder="Add Lat and Long coordinates" type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
           <button type="button" onClick={handleLocationClick}>Use current location</button>
         </label>
-        <br />
+        <br/>
         <label>
           Image:
           <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
         </label>
-        <br />
+        <br/>
         <label>
           STATUS:
           <br />
