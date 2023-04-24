@@ -35,7 +35,7 @@ const Report = () => {
   };
 
   return (
-    <div>
+    <center>
       <h2>Add a Report</h2>
 
       <form onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ const Report = () => {
         <br />
         <label>
           Location:
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
+          <input placeholder="Add Lat and Long coordinates" type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
           <button type="button" onClick={handleLocationClick}>Use current location</button>
         </label>
         <br />
@@ -72,7 +72,7 @@ const Report = () => {
         <label>
           STATUS:
           <br />
-          <input type="radio" name="status" value="under investigation" onChange={(e) => setStatus(e.target.value)} /> Under investigation
+          <input type="radio" name="status" value="under investigation" onChange={(e) => setStatus(e.target.value)}required/> Under investigation
           <br />
           <input type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
           <br />
@@ -85,7 +85,7 @@ const Report = () => {
 
       {/* Display submitted form data below with edit and delete buttons */}
       {/* TODO: Implement display and functionality for edit and delete buttons */}
-    </div>
+    </center>
   );
 };
 
