@@ -5171,3 +5171,815 @@ Processing by InterventionRecordsController#update as */*
 Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3292)
 
 
+Started GET "/" for 127.0.0.1 at 2023-04-22 21:30:57 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as */*
+  Rendering /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.3ms | Allocations: 660)
+Completed 200 OK in 18ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 5499)
+
+
+Started GET "/intervention_records" for 127.0.0.1 at 2023-04-22 21:34:49 +0300
+Processing by InterventionRecordsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:81:in `authorize_unauthenticated'
+  [1m[36mInterventionRecord Load (0.7ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:12:in `index'
+Completed 200 OK in 106ms (Views: 42.4ms | ActiveRecord: 2.8ms | Allocations: 44988)
+
+
+Started GET "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:35:03 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:82:in `authorize_unauthenticated'
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 15ms (Views: 7.9ms | ActiveRecord: 0.9ms | Allocations: 8209)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:35:56 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Testing Endpoint 4 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 4 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: create, request: #<ActionDispatch::Request:0x00007f2180c80fc0>, params: {"title"=>"Testing Endpoint 4 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"create", "red_flag_record"=>{"title"=>"Testing Endpoint 4 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Testing Endpoint 4 post"], ["description", "Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://nolan.test/melda.pacocha"], ["user_id", 3], ["created_at", "2023-04-22 18:35:56.053505"], ["updated_at", "2023-04-22 18:35:56.053505"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 11], ["updated_at", "2023-04-22 18:35:56.067955"], ["id", 13]]
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+Completed 201 Created in 63ms (Views: 0.5ms | ActiveRecord: 20.7ms | Allocations: 11347)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-04-22 21:36:07 +0300
+Processing by UsersController#index as */*
+  Parameters: {"title"=>"Testing Endpoint 4 post", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "user"=>{"created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 2063)
+
+
+Started POST "//login" for 127.0.0.1 at 2023-04-22 21:37:37 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"bigG", "password"=>"[FILTERED]", "email"=>"bigG@email.com", "user_type"=>"admin", "session"=>{"username"=>"bigG", "password"=>"[FILTERED]", "email"=>"bigG@email.com", "user_type"=>"admin"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bigG@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Completed 200 OK in 253ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 916)
+
+
+Started POST "/red_flag_records_records" for 127.0.0.1 at 2023-04-22 21:38:58 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/red_flag_records_records"):
+  
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:39:05 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: create, request: #<ActionDispatch::Request:0x00007f2180a3ad60>, params: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"create", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Testing Endpoint 1!"], ["description", "Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://nolan.test/melda.pacocha"], ["user_id", 3], ["created_at", "2023-04-22 18:39:05.852919"], ["updated_at", "2023-04-22 18:39:05.852919"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (36.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mRedFlagRecord Update (1.0ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 9], ["updated_at", "2023-04-22 18:39:05.893668"], ["id", 14]]
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mTRANSACTION (13.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+Completed 201 Created in 69ms (Views: 0.7ms | ActiveRecord: 51.8ms | Allocations: 5094)
+
+
+Started PUT "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:39:19 +0300
+  
+ActionController::RoutingError (No route matches [PUT] "/red_flag_records"):
+  
+Started GET "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:39:27 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:82:in `authorize_unauthenticated'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 3204)
+
+
+Started PUT "/red_flag_records/14" for 127.0.0.1 at 2023-04-22 21:39:40 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"14", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:36:in `update'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: update, request: #<ActionDispatch::Request:0x00007f2170a52830>, params: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"update", "id"=>"14", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `update'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "status" = ?, "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["status", 1], ["user_id", 3], ["updated_at", "2023-04-22 18:39:40.975980"], ["id", 14]]
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `update'
+  [1m[36mTRANSACTION (36.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `update'
+Completed 200 OK in 50ms (Views: 0.7ms | ActiveRecord: 37.6ms | Allocations: 4590)
+
+
+Started DELETE "/red_flag_records/14" for 127.0.0.1 at 2023-04-22 21:39:47 +0300
+Processing by RedFlagRecordsController#destroy as */*
+  Parameters: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"14", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:56:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:59:in `destroy'
+  [1m[36mRedFlagRecord Destroy (0.4ms)[0m  [1m[31mDELETE FROM "red_flag_records" WHERE "red_flag_records"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/red_flag_records_controller.rb:59:in `destroy'
+  [1m[36mTRANSACTION (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:59:in `destroy'
+Completed 204 No Content in 51ms (ActiveRecord: 41.3ms | Allocations: 2345)
+
+
+Started DELETE "//logout" for 127.0.0.1 at 2023-04-22 21:40:01 +0300
+Processing by SessionsController#destroy as */*
+  Parameters: {"username"=>"bigG", "password"=>"[FILTERED]", "email"=>"bigG@email.com", "user_type"=>"admin", "session"=>{"username"=>"bigG", "password"=>"[FILTERED]", "email"=>"bigG@email.com", "user_type"=>"admin"}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 169)
+
+
+Started POST "//signup" for 127.0.0.1 at 2023-04-22 21:41:20 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"smallG", "password"=>"[FILTERED]", "email"=>"smallG@smail.com", "user"=>{"username"=>"smallG", "email"=>"smallG@smail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f21708e54e8>, params: {"username"=>"smallG", "password"=>"[FILTERED]", "email"=>"smallG@smail.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"smallG", "email"=>"smallG@smail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "smallG"], ["password_digest", "[FILTERED]"], ["email", "smallG@smail.com"], ["user_type", 0], ["created_at", "2023-04-22 18:41:20.493458"], ["updated_at", "2023-04-22 18:41:20.493458"]]
+  ↳ app/controllers/users_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (35.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23:in `create'
+Completed 201 Created in 289ms (Views: 0.3ms | ActiveRecord: 36.1ms | Allocations: 2820)
+
+
+Started GET "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:41:33 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 1!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:82:in `authorize_unauthenticated'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 3030)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:41:51 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: create, request: #<ActionDispatch::Request:0x00007f21805496a8>, params: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"create", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (0.6ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Testing Endpoint 2 Flags!"], ["description", "Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 1], ["image_url", "http://nolan.test/melda.pacocha"], ["user_id", 3], ["created_at", "2023-04-22 18:41:51.291976"], ["updated_at", "2023-04-22 18:41:51.291976"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (36.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 12], ["updated_at", "2023-04-22 18:41:51.334439"], ["id", 15]]
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+Completed 201 Created in 70ms (Views: 0.5ms | ActiveRecord: 49.8ms | Allocations: 5082)
+
+
+Started PUT "/red_flag_records/15" for 127.0.0.1 at 2023-04-22 21:42:12 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"15", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:36:in `update'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: update, request: #<ActionDispatch::Request:0x00007f2180372a00>, params: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"update", "id"=>"15", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 3], ["updated_at", "2023-04-22 18:42:12.946627"], ["id", 15]]
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mTRANSACTION (35.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+Completed 200 OK in 51ms (Views: 0.6ms | ActiveRecord: 36.7ms | Allocations: 4027)
+
+
+Started DELETE "/red_flag_records/15" for 127.0.0.1 at 2023-04-22 21:42:25 +0300
+Processing by RedFlagRecordsController#destroy as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"15", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:56:in `destroy'
+Completed 422 Unprocessable Entity in 4ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1071)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:42:45 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: create, request: #<ActionDispatch::Request:0x00007f2180df1940>, params: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"create", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under-investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1281)
+
+
+  
+ArgumentError ('under-investigation' is not a valid status):
+  
+app/controllers/red_flag_records_controller.rb:23:in `create'
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-04-22 21:43:26 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: create, request: #<ActionDispatch::Request:0x00007f2180a86030>, params: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"create", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"under_investigation", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (0.7ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Testing Endpoint 2 Flags!"], ["description", "Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://nolan.test/melda.pacocha"], ["user_id", 3], ["created_at", "2023-04-22 18:43:26.252793"], ["updated_at", "2023-04-22 18:43:26.252793"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (37.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 12], ["updated_at", "2023-04-22 18:43:26.296010"], ["id", 16]]
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:26:in `create'
+Completed 201 Created in 65ms (Views: 0.6ms | ActiveRecord: 47.9ms | Allocations: 5085)
+
+
+Started PUT "/red_flag_records/16" for 127.0.0.1 at 2023-04-22 21:43:57 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"16", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:36:in `update'
+[31mUnpermitted parameters: :created_at, :updated_at. Context: { controller: RedFlagRecordsController, action: update, request: #<ActionDispatch::Request:0x00007f2170bee2e8>, params: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "controller"=>"red_flag_records", "action"=>"update", "id"=>"16", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mRedFlagRecord Update (0.4ms)[0m  [1m[33mUPDATE "red_flag_records" SET "user_id" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["user_id", 3], ["updated_at", "2023-04-22 18:43:57.018296"], ["id", 16]]
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+  [1m[36mTRANSACTION (36.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:45:in `update'
+Completed 200 OK in 51ms (Views: 0.6ms | ActiveRecord: 37.5ms | Allocations: 4028)
+
+
+Started DELETE "/red_flag_records/16" for 127.0.0.1 at 2023-04-22 21:44:15 +0300
+Processing by RedFlagRecordsController#destroy as */*
+  Parameters: {"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z", "id"=>"16", "red_flag_record"=>{"title"=>"Testing Endpoint 2 Flags!", "description"=>"Architecto quidem maxime. Pariatur neque autem. Incidunt blanditiis nobis.", "latitude"=>"-50.044345", "longitude"=>"-178.674892", "status"=>"rejected", "image_url"=>"http://nolan.test/melda.pacocha", "user_id"=>3, "created_at"=>"2023-04-22T10:41:48.061Z", "updated_at"=>"2023-04-22T10:42:35.885Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `current_user'
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:56:in `destroy'
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1073)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "emerson"], ["password_digest", "[FILTERED]"], ["email", "armand@boehm.test"], ["user_type", 0], ["created_at", "2023-04-24 07:35:21.828443"], ["updated_at", "2023-04-24 07:35:21.828443"]]
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "danny.cartwright"], ["password_digest", "[FILTERED]"], ["email", "ivory.volkman@larkin-zemlak.example"], ["user_type", 0], ["created_at", "2023-04-24 07:35:21.842091"], ["updated_at", "2023-04-24 07:35:21.842091"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "marvin"], ["password_digest", "[FILTERED]"], ["email", "mila@brown-baumbach.test"], ["user_type", 0], ["created_at", "2023-04-24 07:35:21.853392"], ["updated_at", "2023-04-24 07:35:21.853392"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "clara_turcotte"], ["password_digest", "[FILTERED]"], ["email", "spencer_heaney@wisoky.example"], ["user_type", 0], ["created_at", "2023-04-24 07:35:21.870922"], ["updated_at", "2023-04-24 07:35:21.870922"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "dannielle_greenfelder"], ["password_digest", "[FILTERED]"], ["email", "rosalva.shields@goyette-jenkins.example"], ["user_type", 0], ["created_at", "2023-04-24 07:35:21.887108"], ["updated_at", "2023-04-24 07:35:21.887108"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Est qui pariatur nihil."], ["description", "Ut perferendis qui. Eum neque qui. Expedita itaque laboriosam."], ["latitude", 37.58291], ["longitude", -32.583878], ["status", 0], ["image_url", "http://runolfsson.test/lanny.brekke"], ["user_id", 4], ["created_at", "2023-04-24 07:35:21.942850"], ["updated_at", "2023-04-24 07:35:21.942850"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Aliquid nobis minima hic."], ["description", "Sint facere quia. Quis molestiae doloribus. Nulla illum expedita."], ["latitude", -43.822008], ["longitude", -46.721786], ["status", 0], ["image_url", "http://armstrong-armstrong.example/marquis.hermann"], ["user_id", 5], ["created_at", "2023-04-24 07:35:21.953228"], ["updated_at", "2023-04-24 07:35:21.953228"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dolorem rem aut esse."], ["description", "Aut magni aliquid. Consectetur provident et. Harum id eius."], ["latitude", 88.104842], ["longitude", -77.747453], ["status", 0], ["image_url", "http://buckridge.test/jessia"], ["user_id", 3], ["created_at", "2023-04-24 07:35:21.965134"], ["updated_at", "2023-04-24 07:35:21.965134"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Facilis provident rerum iure."], ["description", "Fugiat ut consequuntur. Totam aut magni. Dolore et rerum."], ["latitude", -48.886729], ["longitude", -179.135546], ["status", 0], ["image_url", "http://cartwright.example/shawnda.metz"], ["user_id", 4], ["created_at", "2023-04-24 07:35:21.975913"], ["updated_at", "2023-04-24 07:35:21.975913"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Perspiciatis sed ad ut."], ["description", "Nobis rerum itaque. Labore esse molestiae. Modi nihil repudiandae."], ["latitude", 49.160897], ["longitude", -168.612863], ["status", 0], ["image_url", "http://ryan-hudson.example/willard"], ["user_id", 4], ["created_at", "2023-04-24 07:35:21.988492"], ["updated_at", "2023-04-24 07:35:21.988492"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Quis neque atque fugiat."], ["description", "Earum vitae veniam. Quo quia quibusdam. Consequatur exercitationem temporibus."], ["latitude", 10.969038], ["longitude", -39.638775], ["status", 0], ["image_url", "http://ruecker-pfeffer.test/timmy"], ["user_id", 5], ["created_at", "2023-04-24 07:35:22.028398"], ["updated_at", "2023-04-24 07:35:22.028398"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Rerum debitis sit asperiores."], ["description", "Neque delectus voluptate. Dicta placeat cumque. Vero repudiandae aut."], ["latitude", -59.447888], ["longitude", -7.914477], ["status", 0], ["image_url", "http://abbott.test/loralee"], ["user_id", 2], ["created_at", "2023-04-24 07:35:22.042896"], ["updated_at", "2023-04-24 07:35:22.042896"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dolores atque accusantium et."], ["description", "Occaecati modi doloremque. Eum quod fugit. Soluta quam aut."], ["latitude", -34.479997], ["longitude", -23.20823], ["status", 0], ["image_url", "http://glover-lakin.test/earl.luettgen"], ["user_id", 5], ["created_at", "2023-04-24 07:35:22.061842"], ["updated_at", "2023-04-24 07:35:22.061842"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Labore sed adipisci autem."], ["description", "Voluptatem dolorem nam. Ratione vitae dolor. Aut eligendi nulla."], ["latitude", 16.772648], ["longitude", -178.464575], ["status", 0], ["image_url", "http://leuschke.example/quyen"], ["user_id", 5], ["created_at", "2023-04-24 07:35:22.082910"], ["updated_at", "2023-04-24 07:35:22.082910"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Esse nam recusandae corrupti."], ["description", "Suscipit ratione in. Numquam quas ipsam. Quae exercitationem eum."], ["latitude", 63.019846], ["longitude", -117.934534], ["status", 0], ["image_url", "http://rempel.test/georgene"], ["user_id", 4], ["created_at", "2023-04-24 07:35:22.097013"], ["updated_at", "2023-04-24 07:35:22.097013"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Red_Flag_Records 1"], ["description", "Corrupt Karau"], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://oconnell-kerluke.test/candace"], ["user_id", 5], ["created_at", "2023-04-24 07:35:22.110584"], ["updated_at", "2023-04-24 07:35:22.110584"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "lezlie"], ["password_digest", "[FILTERED]"], ["email", "aubrey.beer@langworth-reinger.test"], ["user_type", 0], ["created_at", "2023-04-24 07:38:51.802847"], ["updated_at", "2023-04-24 07:38:51.802847"]]
+  [1m[36mTRANSACTION (37.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tu"], ["password_digest", "[FILTERED]"], ["email", "vaughn@spinka-rogahn.example"], ["user_type", 0], ["created_at", "2023-04-24 07:38:51.846056"], ["updated_at", "2023-04-24 07:38:51.846056"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "merissa.berge"], ["password_digest", "[FILTERED]"], ["email", "thaddeus@gutkowski-raynor.example"], ["user_type", 0], ["created_at", "2023-04-24 07:38:51.866507"], ["updated_at", "2023-04-24 07:38:51.866507"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "jeannie.yost"], ["password_digest", "[FILTERED]"], ["email", "carolann.lind@mosciski.example"], ["user_type", 0], ["created_at", "2023-04-24 07:38:51.886917"], ["updated_at", "2023-04-24 07:38:51.886917"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "martha.pfannerstill"], ["password_digest", "[FILTERED]"], ["email", "vita@parisian.example"], ["user_type", 0], ["created_at", "2023-04-24 07:38:51.906949"], ["updated_at", "2023-04-24 07:38:51.906949"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Voluptas quos quam omnis."], ["description", "Vero eos in. Unde nesciunt ut. Iure qui similique."], ["latitude", 46.525316], ["longitude", 61.75821], ["status", 0], ["image_url", "http://mante.example/elane"], ["user_id", 1], ["created_at", "2023-04-24 07:38:51.968668"], ["updated_at", "2023-04-24 07:38:51.968668"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ullam eaque ut totam."], ["description", "Quia ullam expedita. Aut neque esse. Ratione minus vel."], ["latitude", 2.89071], ["longitude", -178.302979], ["status", 0], ["image_url", "http://rowe-emard.test/ernestine"], ["user_id", 3], ["created_at", "2023-04-24 07:38:51.979769"], ["updated_at", "2023-04-24 07:38:51.979769"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dicta culpa occaecati et."], ["description", "Odit enim omnis. Culpa veritatis cumque. Architecto laborum assumenda."], ["latitude", 31.660042], ["longitude", 174.350971], ["status", 0], ["image_url", "http://bogan-dubuque.test/francesca"], ["user_id", 1], ["created_at", "2023-04-24 07:38:51.993697"], ["updated_at", "2023-04-24 07:38:51.993697"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dignissimos qui distinctio quam."], ["description", "Ut sunt expedita. Mollitia ut nam. Qui exercitationem rerum."], ["latitude", 44.196256], ["longitude", -134.282427], ["status", 0], ["image_url", "http://johnson.test/tanner"], ["user_id", 4], ["created_at", "2023-04-24 07:38:52.004209"], ["updated_at", "2023-04-24 07:38:52.004209"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.9ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iusto voluptatem delectus autem."], ["description", "Cumque quia non. Consequatur veritatis quis. Quod voluptate aut."], ["latitude", -69.968439], ["longitude", -167.487676], ["status", 0], ["image_url", "http://gerhold.test/heide"], ["user_id", 4], ["created_at", "2023-04-24 07:38:52.027916"], ["updated_at", "2023-04-24 07:38:52.027916"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Facilis cum quia perspiciatis."], ["description", "Sed non aut. Eum occaecati saepe. Beatae porro dolor."], ["latitude", 28.82647], ["longitude", 175.584968], ["status", 0], ["image_url", "http://schinner.example/tyrone.dubuque"], ["user_id", 4], ["created_at", "2023-04-24 07:38:52.076031"], ["updated_at", "2023-04-24 07:38:52.076031"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Aut et debitis incidunt."], ["description", "Hic nesciunt molestias. Soluta exercitationem et. Fugit sequi omnis."], ["latitude", 84.513184], ["longitude", 103.863662], ["status", 0], ["image_url", "http://collins.example/tracy_adams"], ["user_id", 2], ["created_at", "2023-04-24 07:38:52.089522"], ["updated_at", "2023-04-24 07:38:52.089522"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Est magnam voluptates nesciunt."], ["description", "Minus voluptatem voluptatem. Molestiae minima veritatis. Autem asperiores et."], ["latitude", -44.861502], ["longitude", 57.928112], ["status", 0], ["image_url", "http://ratke-schuster.test/cordell.windler"], ["user_id", 3], ["created_at", "2023-04-24 07:38:52.104881"], ["updated_at", "2023-04-24 07:38:52.104881"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sequi soluta repudiandae ut."], ["description", "Qui et sint. Voluptatem tempore et. Nulla quis necessitatibus."], ["latitude", 47.843993], ["longitude", 65.240649], ["status", 0], ["image_url", "http://champlin.test/ira"], ["user_id", 5], ["created_at", "2023-04-24 07:38:52.118727"], ["updated_at", "2023-04-24 07:38:52.118727"]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sed a qui voluptates."], ["description", "Excepturi ducimus autem. Et praesentium consequuntur. Quos voluptate qui."], ["latitude", -45.745532], ["longitude", -86.798166], ["status", 0], ["image_url", "http://tillman.test/mathew"], ["user_id", 3], ["created_at", "2023-04-24 07:38:52.133481"], ["updated_at", "2023-04-24 07:38:52.133481"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Red_Flag_Records 1"], ["description", "Corrupt Karau"], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://oconnell-kerluke.test/candace"], ["user_id", 21], ["created_at", "2023-04-24 07:38:52.146242"], ["updated_at", "2023-04-24 07:38:52.146242"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "cheryle"], ["password_digest", "[FILTERED]"], ["email", "sabrina.williamson@dickinson-skiles.test"], ["user_type", 0], ["created_at", "2023-04-24 07:39:52.302823"], ["updated_at", "2023-04-24 07:39:52.302823"]]
+  [1m[36mTRANSACTION (33.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "arden"], ["password_digest", "[FILTERED]"], ["email", "ngan.runte@turcotte.test"], ["user_type", 0], ["created_at", "2023-04-24 07:39:52.340593"], ["updated_at", "2023-04-24 07:39:52.340593"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "anika_lowe"], ["password_digest", "[FILTERED]"], ["email", "eugene.walker@donnelly.example"], ["user_type", 0], ["created_at", "2023-04-24 07:39:52.354656"], ["updated_at", "2023-04-24 07:39:52.354656"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "reid"], ["password_digest", "[FILTERED]"], ["email", "stuart@cartwright-okeefe.example"], ["user_type", 0], ["created_at", "2023-04-24 07:39:52.371650"], ["updated_at", "2023-04-24 07:39:52.371650"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "delbert"], ["password_digest", "[FILTERED]"], ["email", "cherry_zulauf@hammes.example"], ["user_type", 0], ["created_at", "2023-04-24 07:39:52.388827"], ["updated_at", "2023-04-24 07:39:52.388827"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Eos consequatur natus vel."], ["description", "Neque est qui. Voluptatem sunt consectetur. Veniam magnam repellat."], ["latitude", -10.403978], ["longitude", -142.392016], ["status", 0], ["image_url", "http://greenfelder.test/theodore"], ["user_id", 1], ["created_at", "2023-04-24 07:39:52.442358"], ["updated_at", "2023-04-24 07:39:52.442358"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "A repudiandae dolorem quam."], ["description", "Tempore consequatur esse. Qui nam quae. Nostrum ut porro."], ["latitude", 43.765788], ["longitude", 27.208764], ["status", 0], ["image_url", "http://fahey.example/patrick"], ["user_id", 1], ["created_at", "2023-04-24 07:39:52.458972"], ["updated_at", "2023-04-24 07:39:52.458972"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupti aliquid doloremque cum."], ["description", "Ut in itaque. Ipsum incidunt enim. Tenetur est maxime."], ["latitude", 16.676711], ["longitude", -140.761502], ["status", 0], ["image_url", "http://block-runolfsson.test/patricia_blanda"], ["user_id", 2], ["created_at", "2023-04-24 07:39:52.477669"], ["updated_at", "2023-04-24 07:39:52.477669"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Vel distinctio nulla quidem."], ["description", "Ut aut dolorem. Sed sit eveniet. Impedit totam autem."], ["latitude", -25.863769], ["longitude", 109.459767], ["status", 0], ["image_url", "http://hickle.example/julian"], ["user_id", 3], ["created_at", "2023-04-24 07:39:52.492725"], ["updated_at", "2023-04-24 07:39:52.492725"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Qui aliquam quam assumenda."], ["description", "Voluptatem qui ut. Voluptatem sed et. Inventore ea ut."], ["latitude", -77.203028], ["longitude", 104.097287], ["status", 0], ["image_url", "http://kuhlman.test/prince.beatty"], ["user_id", 5], ["created_at", "2023-04-24 07:39:52.509693"], ["updated_at", "2023-04-24 07:39:52.509693"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Nihil doloribus cupiditate odio."], ["description", "Inventore corrupti reiciendis. Alias eaque delectus. Quisquam veniam id."], ["latitude", 29.37652], ["longitude", -21.882291], ["status", 0], ["image_url", "http://gottlieb-jakubowski.example/reba"], ["user_id", 1], ["created_at", "2023-04-24 07:39:52.552582"], ["updated_at", "2023-04-24 07:39:52.552582"]]
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Adipisci amet minima excepturi."], ["description", "Dicta vero facere. Velit amet et. Occaecati et vel."], ["latitude", -36.747825], ["longitude", -58.010103], ["status", 0], ["image_url", "http://cummings.example/terrence.littel"], ["user_id", 2], ["created_at", "2023-04-24 07:39:52.576239"], ["updated_at", "2023-04-24 07:39:52.576239"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Quia aspernatur aut et."], ["description", "Sed fugit ex. Veniam et necessitatibus. Dolorem ut quis."], ["latitude", -48.725729], ["longitude", 10.905685], ["status", 0], ["image_url", "http://feil.test/loura_koelpin"], ["user_id", 4], ["created_at", "2023-04-24 07:39:52.593409"], ["updated_at", "2023-04-24 07:39:52.593409"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Unde rerum ipsa soluta."], ["description", "Sed deserunt similique. Fugit eaque omnis. Asperiores quos hic."], ["latitude", -22.951238], ["longitude", 8.300633], ["status", 0], ["image_url", "http://thiel.example/alberta"], ["user_id", 1], ["created_at", "2023-04-24 07:39:52.610539"], ["updated_at", "2023-04-24 07:39:52.610539"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dolorem modi architecto aut."], ["description", "Quia rerum cumque. Neque minus molestiae. Quo cupiditate blanditiis."], ["latitude", -5.866342], ["longitude", -164.468348], ["status", 0], ["image_url", "http://kautzer-hintz.test/willis"], ["user_id", 1], ["created_at", "2023-04-24 07:39:52.624887"], ["updated_at", "2023-04-24 07:39:52.624887"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Red_Flag_Records 2"], ["description", "Corrupt Karau"], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://oconnell-kerluke.test/candace"], ["user_id", 11], ["created_at", "2023-04-24 07:39:52.639482"], ["updated_at", "2023-04-24 07:39:52.639482"]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "lizzette"], ["password_digest", "[FILTERED]"], ["email", "heriberto@hills-robel.example"], ["user_type", 0], ["created_at", "2023-04-24 07:43:29.197833"], ["updated_at", "2023-04-24 07:43:29.197833"]]
+  [1m[36mTRANSACTION (35.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "mickey"], ["password_digest", "[FILTERED]"], ["email", "in@gusikowski.example"], ["user_type", 0], ["created_at", "2023-04-24 07:43:29.236673"], ["updated_at", "2023-04-24 07:43:29.236673"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "florentino_ortiz"], ["password_digest", "[FILTERED]"], ["email", "jonathan.rodriguez@hilll.test"], ["user_type", 0], ["created_at", "2023-04-24 07:43:29.250815"], ["updated_at", "2023-04-24 07:43:29.250815"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "miquel"], ["password_digest", "[FILTERED]"], ["email", "irwin_zboncak@torp-nicolas.test"], ["user_type", 0], ["created_at", "2023-04-24 07:43:29.263577"], ["updated_at", "2023-04-24 07:43:29.263577"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "otto"], ["password_digest", "[FILTERED]"], ["email", "yolando_luettgen@kulas.test"], ["user_type", 0], ["created_at", "2023-04-24 07:43:29.281446"], ["updated_at", "2023-04-24 07:43:29.281446"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Expedita porro ut animi."], ["description", "Harum dolorum ducimus. Neque debitis nostrum. Reiciendis consequatur ipsum."], ["latitude", -80.196494], ["longitude", -6.714682], ["status", 0], ["image_url", "http://cruickshank-daniel.test/summer"], ["user_id", 3], ["created_at", "2023-04-24 07:43:29.349079"], ["updated_at", "2023-04-24 07:43:29.349079"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Quis quos illo quia."], ["description", "Fuga aperiam hic. Ullam eius quaerat. Dolorem quisquam provident."], ["latitude", 44.230578], ["longitude", -112.21448], ["status", 0], ["image_url", "http://larson-doyle.test/kyung.hahn"], ["user_id", 5], ["created_at", "2023-04-24 07:43:29.370111"], ["updated_at", "2023-04-24 07:43:29.370111"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Quia tempore id non."], ["description", "Eos non neque. Neque quia ut. Et nihil facere."], ["latitude", 37.842712], ["longitude", 109.339333], ["status", 0], ["image_url", "http://kuhic.test/janae"], ["user_id", 3], ["created_at", "2023-04-24 07:43:29.384929"], ["updated_at", "2023-04-24 07:43:29.384929"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.7ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "At qui reprehenderit aut."], ["description", "Aliquid omnis optio. Eius expedita tenetur. Eveniet sint voluptatum."], ["latitude", -9.487198], ["longitude", 76.605723], ["status", 0], ["image_url", "http://steuber-satterfield.example/filiberto"], ["user_id", 3], ["created_at", "2023-04-24 07:43:29.404882"], ["updated_at", "2023-04-24 07:43:29.404882"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sapiente corrupti placeat aliquid."], ["description", "Excepturi autem enim. Praesentium vel et. Consequatur aut voluptatem."], ["latitude", -45.169008], ["longitude", 115.298897], ["status", 0], ["image_url", "http://kreiger-steuber.test/nathanial"], ["user_id", 1], ["created_at", "2023-04-24 07:43:29.427644"], ["updated_at", "2023-04-24 07:43:29.427644"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Nobis natus libero qui."], ["description", "Placeat et sit. Consequatur odit ullam. Tempore modi consequatur."], ["latitude", -0.554381], ["longitude", -128.747994], ["status", 0], ["image_url", "http://durgan-pacocha.test/elisabeth"], ["user_id", 3], ["created_at", "2023-04-24 07:43:29.447951"], ["updated_at", "2023-04-24 07:43:29.447951"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Atque nam sapiente cumque."], ["description", "Ipsa et labore. Sint ut odit. Exercitationem odit voluptas."], ["latitude", -87.336292], ["longitude", 59.926576], ["status", 0], ["image_url", "http://breitenberg.test/mathew"], ["user_id", 4], ["created_at", "2023-04-24 07:43:29.460284"], ["updated_at", "2023-04-24 07:43:29.460284"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Atque voluptas doloremque corrupti."], ["description", "Tempore in qui. Pariatur qui iure. Molestiae voluptas ea."], ["latitude", 9.977734], ["longitude", -69.657877], ["status", 0], ["image_url", "http://ledner-ernser.test/glen"], ["user_id", 4], ["created_at", "2023-04-24 07:43:29.470383"], ["updated_at", "2023-04-24 07:43:29.470383"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Omnis quasi veritatis animi."], ["description", "Sed at odit. Non nam rerum. Consectetur similique ipsa."], ["latitude", -86.986145], ["longitude", 142.873798], ["status", 0], ["image_url", "http://kassulke.example/chad"], ["user_id", 3], ["created_at", "2023-04-24 07:43:29.482434"], ["updated_at", "2023-04-24 07:43:29.482434"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ea ullam non voluptates."], ["description", "Aspernatur labore et. Illum quaerat sunt. Voluptates dolorem ut."], ["latitude", 71.414438], ["longitude", 165.630203], ["status", 0], ["image_url", "http://jenkins.test/aaron"], ["user_id", 2], ["created_at", "2023-04-24 07:43:29.492183"], ["updated_at", "2023-04-24 07:43:29.492183"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.5ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Red_Flag_Records 2"], ["description", "Corrupt Karau"], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://oconnell-kerluke.test/candace"], ["user_id", 7], ["created_at", "2023-04-24 07:43:29.513097"], ["updated_at", "2023-04-24 07:43:29.513097"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Intervention_Records 2"], ["description", "Corrupt Karau"], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "http://oconnell-kerluke.test/candace"], ["user_id", 26], ["created_at", "2023-04-24 07:43:29.527841"], ["updated_at", "2023-04-24 07:43:29.527841"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "johnathon"], ["password_digest", "[FILTERED]"], ["email", "rosia@connelly-schaefer.test"], ["user_type", 0], ["created_at", "2023-04-24 09:15:29.257448"], ["updated_at", "2023-04-24 09:15:29.257448"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "ethelyn_kuphal"], ["password_digest", "[FILTERED]"], ["email", "duncan@deckow-lesch.test"], ["user_type", 0], ["created_at", "2023-04-24 09:15:29.270356"], ["updated_at", "2023-04-24 09:15:29.270356"]]
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "hung.batz"], ["password_digest", "[FILTERED]"], ["email", "osvaldo.purdy@cummings.test"], ["user_type", 0], ["created_at", "2023-04-24 09:15:29.289157"], ["updated_at", "2023-04-24 09:15:29.289157"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "jody"], ["password_digest", "[FILTERED]"], ["email", "fritz@macgyver.example"], ["user_type", 0], ["created_at", "2023-04-24 09:15:29.310994"], ["updated_at", "2023-04-24 09:15:29.310994"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "chas.bernhard"], ["password_digest", "[FILTERED]"], ["email", "paige@wiegand-reichert.example"], ["user_type", 0], ["created_at", "2023-04-24 09:15:29.331697"], ["updated_at", "2023-04-24 09:15:29.331697"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Karau"], ["description", "Traffic officers taking bribes "], ["latitude", -20.044345], ["longitude", -150.674892], ["status", 0], ["image_url", "https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"], ["user_id", 34], ["created_at", "2023-04-24 09:15:29.391421"], ["updated_at", "2023-04-24 09:15:29.391421"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lack of Social amenities"], ["description", "Local hospital in bad shape"], ["latitude", -44.044345], ["longitude", -101.674892], ["status", 0], ["image_url", "https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg"], ["user_id", 15], ["created_at", "2023-04-24 09:15:29.418313"], ["updated_at", "2023-04-24 09:15:29.418313"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.7ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bribing of Health Inspector"], ["description", "Despite several irregularities during Inspection the manager and Health inspector agreed to a compromise"], ["latitude", -19.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 31], ["created_at", "2023-04-24 09:15:29.444675"], ["updated_at", "2023-04-24 09:15:29.444675"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.8ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Stalled Stadium Construction"], ["description", "Workers and equipment were only seen at the site for a month."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg"], ["user_id", 7], ["created_at", "2023-04-24 09:15:29.470100"], ["updated_at", "2023-04-24 09:15:29.470100"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Judicial system"], ["description", "The judge in my case was spotted with the defendant outside courtroom."], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 8], ["created_at", "2023-04-24 09:15:29.492642"], ["updated_at", "2023-04-24 09:15:29.492642"]]
+  [1m[36mTRANSACTION (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dilapidated Road Work"], ["description", "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still."], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg"], ["user_id", 36], ["created_at", "2023-04-24 09:15:29.514130"], ["updated_at", "2023-04-24 09:15:29.514130"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Forceful Eviction"], ["description", "A developer came with Equipment and Personell and demolished businesses"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://gdb.voanews.com/C1DCC61C-A18D-47E5-810A-DB414509157B_cx0_cy9_cw0_w1597_n_r1_st_s.jpg"], ["user_id", 11], ["created_at", "2023-04-24 09:15:29.538430"], ["updated_at", "2023-04-24 09:15:29.538430"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Banditry"], ["description", "Heavy Clashes between two pastoralists communities that are heavily armed"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.aljazeera.com/wp-content/uploads/2016/12/20b77a41a394462b9a38f1e4c7883a81_18.jpeg?resize=770%2C513&quality=80"], ["user_id", 36], ["created_at", "2023-04-24 09:15:29.560161"], ["updated_at", "2023-04-24 09:15:29.560161"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Embezzlement of funds"], ["description", "Company CEO misappropriated customer pensions"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://pointofview.net/wp-content/uploads/2022/11/FTX-crash-1024x577.png"], ["user_id", 28], ["created_at", "2023-04-24 09:15:29.581264"], ["updated_at", "2023-04-24 09:15:29.581264"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Public Hazard"], ["description", " Endangerment of  public safety and life"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1"], ["user_id", 13], ["created_at", "2023-04-24 09:15:29.601559"], ["updated_at", "2023-04-24 09:15:29.601559"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (11.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (11.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-24 09:16:34.703208"], ["updated_at", "2023-04-24 09:16:34.703208"]]
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-04-24 09:16:34.732020"], ["updated_at", "2023-04-24 09:16:34.732020"]]
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (10.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (10.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-24 09:16:34.956131"], ["updated_at", "2023-04-24 09:16:34.956131"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-04-24 09:16:34.978753"], ["key", "environment"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-04-24 09:16:35.002027"], ["updated_at", "2023-04-24 09:16:35.002027"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "ezequiel"], ["password_digest", "[FILTERED]"], ["email", "toby_will@nolan.test"], ["user_type", 0], ["created_at", "2023-04-24 09:16:35.301810"], ["updated_at", "2023-04-24 09:16:35.301810"]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "woodrow_parker"], ["password_digest", "[FILTERED]"], ["email", "stacee.jaskolski@robel-morissette.example"], ["user_type", 0], ["created_at", "2023-04-24 09:16:35.317557"], ["updated_at", "2023-04-24 09:16:35.317557"]]
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "reinaldo.bartell"], ["password_digest", "[FILTERED]"], ["email", "shaunta@bayer.test"], ["user_type", 0], ["created_at", "2023-04-24 09:16:35.333477"], ["updated_at", "2023-04-24 09:16:35.333477"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "burl.blanda"], ["password_digest", "[FILTERED]"], ["email", "fidela@witting.example"], ["user_type", 0], ["created_at", "2023-04-24 09:16:35.347229"], ["updated_at", "2023-04-24 09:16:35.347229"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "signe_wintheiser"], ["password_digest", "[FILTERED]"], ["email", "alex@ritchie-hahn.test"], ["user_type", 0], ["created_at", "2023-04-24 09:16:35.363832"], ["updated_at", "2023-04-24 09:16:35.363832"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Karau"], ["description", "Traffic officers taking bribes "], ["latitude", -20.044345], ["longitude", -150.674892], ["status", 0], ["image_url", "https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"], ["user_id", 4], ["created_at", "2023-04-24 09:16:35.411821"], ["updated_at", "2023-04-24 09:16:35.411821"]]
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lack of Social amenities"], ["description", "Local hospital in bad shape"], ["latitude", -44.044345], ["longitude", -101.674892], ["status", 0], ["image_url", "https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg"], ["user_id", 5], ["created_at", "2023-04-24 09:16:35.436043"], ["updated_at", "2023-04-24 09:16:35.436043"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bribing of Health Inspector"], ["description", "Despite several irregularities during Inspection the manager and Health inspector agreed to a compromise"], ["latitude", -19.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 1], ["created_at", "2023-04-24 09:16:35.451059"], ["updated_at", "2023-04-24 09:16:35.451059"]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Stalled Stadium Construction"], ["description", "Workers and equipment were only seen at the site for a month."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg"], ["user_id", 1], ["created_at", "2023-04-24 09:16:35.466356"], ["updated_at", "2023-04-24 09:16:35.466356"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Judicial system"], ["description", "The judge in my case was spotted with the defendant outside courtroom."], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 2], ["created_at", "2023-04-24 09:16:35.481379"], ["updated_at", "2023-04-24 09:16:35.481379"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.7ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dilapidated Road Work"], ["description", "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still."], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg"], ["user_id", 3], ["created_at", "2023-04-24 09:16:35.504887"], ["updated_at", "2023-04-24 09:16:35.504887"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Forceful Eviction"], ["description", "A developer came with Equipment and Personell and demolished businesses"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://gdb.voanews.com/C1DCC61C-A18D-47E5-810A-DB414509157B_cx0_cy9_cw0_w1597_n_r1_st_s.jpg"], ["user_id", 5], ["created_at", "2023-04-24 09:16:35.526993"], ["updated_at", "2023-04-24 09:16:35.526993"]]
+  [1m[36mTRANSACTION (13.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Banditry"], ["description", "Heavy Clashes between two pastoralists communities that are heavily armed"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.aljazeera.com/wp-content/uploads/2016/12/20b77a41a394462b9a38f1e4c7883a81_18.jpeg?resize=770%2C513&quality=80"], ["user_id", 1], ["created_at", "2023-04-24 09:16:35.550904"], ["updated_at", "2023-04-24 09:16:35.550904"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Embezzlement of funds"], ["description", "Company CEO misappropriated customer pensions"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://pointofview.net/wp-content/uploads/2022/11/FTX-crash-1024x577.png"], ["user_id", 4], ["created_at", "2023-04-24 09:16:35.567266"], ["updated_at", "2023-04-24 09:16:35.567266"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Public Hazard"], ["description", " Endangerment of  public safety and life"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1"], ["user_id", 3], ["created_at", "2023-04-24 09:16:35.581583"], ["updated_at", "2023-04-24 09:16:35.581583"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m

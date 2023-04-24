@@ -10,33 +10,96 @@ puts "Seeding data...."
   )
 end
 
-#Intervention_Records
-5.times do
+RedFlagRecord.create!(
+    title: "Corrupt Karau" ,
+    description: "Traffic officers taking bribes ",
+    latitude: -20.044345 ,
+    longitude: -150.674892 ,
+    image_url: 'https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1',
+    user_id: User.pluck(:id).sample,
+    status: 0
+  )
   InterventionRecord.create!(
-    title: Faker::Lorem.sentence,
-    description: Faker::Lorem.paragraph,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    image_url: Faker::Internet.url,
-    user_id: rand(1..5),
+  title: "Lack of Social amenities" ,
+  description: "Local hospital in bad shape",
+  latitude: -44.044345 ,
+  longitude: -101.674892 ,
+  image_url: 'https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg',
+  user_id: User.pluck(:id).sample,
+  status: 0
+)
+RedFlagRecord.create!(
+    title: "Bribing of Health Inspector" ,
+    description: "Despite several irregularities during Inspection the manager and Health inspector agreed to a compromise",
+    latitude: -19.044345 ,
+    longitude: -178.674892 ,
+    image_url: 'https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk=',
+    user_id: User.pluck(:id).sample,
     status: 0
   )
-end
-
-
-
-#Red_Flag_Records
-5.times do
-  RedFlagRecord.create!(
-    title: Faker::Lorem.sentence,
-    description: Faker::Lorem.paragraph,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    image_url: Faker::Internet.url,
-    user_id: rand(1..5),
+  InterventionRecord.create!(
+  title: "Stalled Stadium Construction" ,
+  description: "Workers and equipment were only seen at the site for a month." ,
+  latitude: -50.044345 ,
+  longitude: -178.674892 ,
+  image_url: 'https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg',
+  user_id: User.pluck(:id).sample,
+  status: 0
+)
+RedFlagRecord.create!(
+    title: "Corrupt Judicial system" ,
+    description: "The judge in my case was spotted with the defendant outside courtroom." ,
+    latitude: -30.044345 ,
+    longitude: -108.674892 ,
+    image_url: 'https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk=',
+    user_id: User.pluck(:id).sample,
     status: 0
   )
-end
+  InterventionRecord.create!(
+  title: "Dilapidated Road Work" ,
+  description: "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still." ,
+  latitude: -60.044345 ,
+  longitude: -148.674892 ,
+  image_url: 'https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg',
+  user_id: User.pluck(:id).sample,
+  status: 0
+)
+RedFlagRecord.create!(
+    title: "Forceful Eviction" ,
+    description: "A developer came with Equipment and Personell and demolished businesses" ,
+    latitude: -30.044345 ,
+    longitude: -108.674892 ,
+    image_url: 'https://gdb.voanews.com/C1DCC61C-A18D-47E5-810A-DB414509157B_cx0_cy9_cw0_w1597_n_r1_st_s.jpg',
+    user_id: User.pluck(:id).sample,
+    status: 0
+  )
+  InterventionRecord.create!(
+  title: "Banditry" ,
+  description: "Heavy Clashes between two pastoralists communities that are heavily armed" ,
+  latitude: -60.044345 ,
+  longitude: -148.674892 ,
+  image_url: 'https://www.aljazeera.com/wp-content/uploads/2016/12/20b77a41a394462b9a38f1e4c7883a81_18.jpeg?resize=770%2C513&quality=80',
+  user_id: User.pluck(:id).sample,
+  status: 0
+)
+RedFlagRecord.create!(
+    title: "Embezzlement of funds" ,
+    description: "Company CEO misappropriated customer pensions" ,
+    latitude: -30.044345 ,
+    longitude: -108.674892 ,
+    image_url: 'https://pointofview.net/wp-content/uploads/2022/11/FTX-crash-1024x577.png',
+    user_id: User.pluck(:id).sample,
+    status: 0
+  )
 
+  InterventionRecord.create!(
+  title: "Public Hazard" ,
+  description: " Endangerment of  public safety and life",
+  latitude: -60.044345 ,
+  longitude: -148.674892 ,
+  image_url: 'https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1',
+  user_id: User.pluck(:id).sample,
+  status: 0
+)
 
 puts "Done seeding data"
