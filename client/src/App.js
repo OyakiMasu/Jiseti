@@ -1,5 +1,5 @@
 import './App.css';
-
+// import Add from './components/Add';
 import Dashboard from './components/Dashbord';
 // import data from './components/data';
 // import Edit from './components/Edit';
@@ -11,6 +11,7 @@ import Dashboard from './components/Dashbord';
 function App() {
   return (
     <>
+    {/* <Add /> */}
     <Dashboard />
     {/* <Edit />
     <Header />
