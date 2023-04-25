@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/signup.css'
 import { useNavigate } from "react-router-dom";
 
 function Registerpage() {
@@ -38,19 +39,21 @@ function Registerpage() {
                 
                      <h3 className="title">signup</h3>
 
-                    <label>firstname:</label>
-                    <input  className="loginput"  type="text" value={first} onChange={e => SetFirst(e.target.value)}required></input>
+                    <label>
+                    firstname:
+                    <input placeholder="Firstname" className="emailinput"  type="text" value={first} onChange={e => SetFirst(e.target.value)}required></input>
+                    </label>
 
                     <label>lastname:</label>
-                    <input  className="loginput"  type="text" value={last} onChange={e => SetLast(e.target.value)} required></input>
+                    <input placeholder="Lastname"  className="passinput"  type="text" value={last} onChange={e => SetLast(e.target.value)} required></input>
 
                     <label>Email:</label>
-                    <input  className="loginput" type="text" value={mail} onChange={e => SetMail(e.target.value)} required></input>
+                    <input placeholder="Email"  className="signemail" type="text" value={mail} onChange={e => SetMail(e.target.value)} required></input>
 
                     <label>Password:</label>
-                    <input  className="loginput"  type="text" placeholder="Password" value={pass} onChange={e => SetPass(e.target.value)} required></input>
+                    <input  className="passwordinput"  type="text" placeholder="Password" value={pass} onChange={e => SetPass(e.target.value)} required></input>
 
-                    <input className="button"  type="submit" value="Add User" required></input>
+                    <input className="adduser" type="submit" value="Add User" required></input>
                     
                     <a href="/login">Login</a>
                 </form>

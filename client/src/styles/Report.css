@@ -1,0 +1,29 @@
+.reporttitle{
+  position: relative;
+  width: 448px;
+  height: 81px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 61px;
+  
+}
+.labelinput{
+position: relative;
+width: fit-content;
+height: 80px;
+top: 10%;
+padding: 10px 10px;
+background: #D9D9D9;
+border-radius: 10px;
+}
+.addtitle{
+  position: relative;
+  width: fit-content;
+  height: 80px;
+  top: 10%;
+  padding: 10px 10px;
+  background: #D9D9D9;
+  border-radius: 10px;
+}

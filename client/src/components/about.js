@@ -3,7 +3,9 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <div>
-      <div className='bgimage'></div>
+      <div className='bgimage'>
+        <img src='' alt='stop corruption'/>
+      </div>
       
        <center><h1>About Us</h1></center>
 

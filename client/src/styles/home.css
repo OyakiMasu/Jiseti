@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300;1,400&family=Outfit:wght@800&family=Oxygen&family=Roboto&display=swap');
+
+a{
+  text-align: center;
+ text-decoration: none;
+ width: fit-content;
+ cursor: progress;
+}
+.logo{  
+position: absolute;
+width: 176px;
+height: 57px;
+left: 102px;
+
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 66px;
+}
+.loginlink{
+  position: absolute;
+  width: 87px;
+  height: 66px;
+  right: 20px;
+  top: 44px;
+  
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 66px;
+  /* identical to box height, or 220% */
+  
+  
+  color: #000000;
+}
+.signlink{
+  position: absolute;
+  width: fit-content;
+  height: 66px;
+  left: 1112px;
+  top: 44px;
+  
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 66px;
+  /* identical to box height, or 220% */
+  
+  
+  color: #000000;
+}
+.bottom{
+  position: absolute;
+width: 749px;
+height: 134px;
+left: 87px;
+top: 336px;
+
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 50px;
+line-height: 66px;
+/* or 132% */
+}
+.slogan{
+  position: absolute;
+width: 787px;
+height: 122px;
+left: 82px;
+top: 533px;
+
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 66px;
+}
+.more{
+  position: absolute;
+  width: 148px;
+  height: 66px;
+  left: 190px;
+  top: 784px;
+  background-color: aquamarine;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 66px;
+  /* identical to box height, or 220% */
+  
+  
+  color: #000000;
+}
+/* image goes here */
+.heroimg{
+position: absolute;
+width: 900px;
+height: 1024px;
+box-sizing: border-box;
+left: 52%;
+background: #404040;
+z-index:-1;
+}

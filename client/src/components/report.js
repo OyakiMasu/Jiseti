@@ -14,7 +14,7 @@ function Report() {
   return (
     <center className='card'>
 
-      <center><h1>REPORTS</h1></center>
+      <h1 className='reporttitle'>REPORTS</h1>
 
       {news.map((article, index) => (
         <div key={index}>
