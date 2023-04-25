@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Report.css'
 
 const Report = () => {
   const [description, setDescription] = useState("");
@@ -35,60 +36,60 @@ const Report = () => {
   };
 
   return (
-    <center>
-      <h2>Add a Report</h2>
-
+    <div>
+     <center><h2 className="reporttitle">Add a Report</h2></center>
       <form onSubmit={handleSubmit}>
-        <label>
-          Type:
-          <select value={type} onChange={(e) => setType(e.target.value)} required>
-            <option value="">Select type</option>
-            <option value="red_flag">Red Flag</option>
-            <option value="intervention">Intervention</option>
-          </select>
-        </label>
-        <br/>
-        
-        <label>
-        title:
-          <input placeholder="Add title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
-        </label>
-        <br/>
+       <center>
+            <label className="labelinput">
+                Type:
+                <select value={type} onChange={(e) => setType(e.target.value)} required>
+                  <option value="red_flag">Red Flag</option>
+                  <option value="intervention">Intervention</option>
+                </select>
+              </label>
+              <br/>
+            <label className="addtitle">
+            title:
+              <input placeholder="Add title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+            </label>
+            <br/>
 
-        <label>
-          Description:
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required/>
-        </label>
-        <br/>
+            <label>
+              Description:
+              <textarea value={description} onChange={(e) => setDescription(e.target.value)} required/>
+            </label>
+            <br/>
 
-        <label>
-          Location:
-          <input placeholder="Add Lat and Long coordinates" type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
-          <button type="button" onClick={handleLocationClick}>Use current location</button>
-        </label>
-        <br/>
-        <label>
-          Image:
-          <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-        </label>
-        <br/>
-        <label>
-          STATUS:
-          <br />
-          <input type="radio" name="status" value="under investigation" onChange={(e) => setStatus(e.target.value)}required/> Under investigation
-          <br />
-          <input type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
-          <br />
-          <input type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
-        </label>
-        <br />
-        <button type="submit">Submit</button>
+            <label>
+              Location:
+              <input placeholder="Add Lat and Long coordinates" type="text" value={location} onChange={(e) => setLocation(e.target.value)} required/>
+              <button type="button" onClick={handleLocationClick}>Use current location</button>
+            </label>
+            <br/>
+            <label>
+              Image:
+              <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+            </label>
+            <br/>
+            <label>
+              STATUS:
+              <br />
+              <input type="radio" name="status" value="under investigation" onChange={(e) => setStatus(e.target.value)}required/> Under investigation
+              <br />
+              <input type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
+              <br />
+              <input type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
+            </label>
+            <br />
+            <button type="submit">Submit</button>
+        </center>
+
       </form>
       <a className='' href='/report'>My Reports</a>
 
       {/* Display submitted form data below with edit and delete buttons */}
       {/* TODO: Implement display and functionality for edit and delete buttons */}
-    </center>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './login.css'
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 
@@ -31,23 +32,23 @@ function Login() {
 
     return(
 
-        <div >
+        <center >
             <form className="login"  onSubmit={e => handleSubmit(e)}>
 
                 <h3 className="title">Login</h3>
 
                 <label><b>Email</b></label>
-                <input className="loginput" type="text" placeholder="email" value={user_email} onChange={e => SetUser_email(e.target.value)} required></input>
+                <input className="emailinput" type="text" placeholder="email" value={user_email} onChange={e => SetUser_email(e.target.value)} required></input>
                 <label><b>Password</b></label>
                     
-                <input className="loginput" type="text" placeholder="password." value={user_password} onChange={e => SetUser_password(e.target.value)} required></input>
+                <input className="passinput" type="text" placeholder="password." value={user_password} onChange={e => SetUser_password(e.target.value)} required></input>
 
                     <input className="button" type="submit" ></input>
 
-                    <a href="/registerpage">Signup</a>
+                    <a href="/registerpage" className="signroute">Signup</a>
 
              </form>
-        </div>
+        </center>
 
     )
 }

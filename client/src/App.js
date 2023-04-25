@@ -1,4 +1,3 @@
-import './App.css';
 import Homepage from './components/Homepage';
 import Login from './components/Login';
 import Registerpage from './components/Registerpage';

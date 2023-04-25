@@ -1,4 +1,5 @@
 import React from "react";
+import './home.css'
 import { Link } from "react-router-dom";
 
 
@@ -6,20 +7,30 @@ function Homepage() {
 
     return(
         <div className="homenav">
-            <nav className="top">
-                <Link to="/registerpage" className="loginlink">Sign Up</Link>
-                <Link to="/login" className="loginlink">Login</Link>
 
+            <nav>
+                <div className="logo">
+                    <span>Jiseti.</span>
+                </div>
+                <div className="signlink">
+                    <Link to="/registerpage">Sign Up</Link>
+                </div>
+                <div className="loginlink">
+                <Link to="/login">Login</Link>
+
+                </div>
             </nav>
-            <h2 className="logo">Jiseti.</h2>
-
+                
+           
          
               <h1 className="bottom">Corruption hurts us all.Lets stop it together</h1>   
 
              <p className="slogan">Join the fight against coruption and be part of creating a world where fairness,justice and intergrity prevail.</p> 
         
-                 <Link to="/about" className="more"> Read more</Link>
-         
+                 <Link to="/about" className="more">Readmore</Link>
+         <div className="heroimg">
+
+         </div>
         </div>
       
     )
