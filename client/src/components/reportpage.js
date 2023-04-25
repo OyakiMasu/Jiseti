@@ -1,5 +1,6 @@
 import '../styles/Report.css'
 import React, { useState } from "react";
+import './Report.css'
 
 const Report = () => {
   const [description, setDescription] = useState("");
