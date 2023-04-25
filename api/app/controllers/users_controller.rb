@@ -2,9 +2,7 @@ class UsersController < ApplicationController
     # Handle ActiveRecord Not Found exception
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-# before_action :authorize, only: [:index, :show]
-
-# before_action :check_unauthenticated_access, only: [:index, :show]
+# before_action :authorize, only: [:index, :show, :update, :destroy]
 
 # get all users /users
 def index
@@ -23,7 +21,7 @@ def create
     user = User.create(user_params)
     if user.valid?
         session[:user_id] = user.id
-        render json: user, status: :created
+        render json: { userId: user.id }, status: :created
     else
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end

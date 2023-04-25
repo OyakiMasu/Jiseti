@@ -1,7 +1,7 @@
 class InterventionRecordsController < ApplicationController
         #Authorization
         before_action :authorize, only: [:create, :update, :destroy]
-        before_action :authorize_unauthenticated, only: [:index, :show]
+        # before_action :authorize_unauthenticated, only: [:index, :show]
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -33,22 +33,26 @@ class InterventionRecordsController < ApplicationController
       
     # PATCH /intervention_records/:id/ User
     def update
-        intervention_record = InterventionRecord.find(params[:id])
-        if current_user.admin? # check if current user is an admin
-          if  intervention_record.update(intervention_record_params)
-            render json:  intervention_record
-          else
-            render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
-          end
-        else # if the user is not an admin, disallow update to the status attribute
-            intervention_record_params_without_status =  intervention_record_params.except(:status)
-          if intervention_record.update(intervention_record_params_without_status)
+      intervention_record = InterventionRecord.find(params[:id])
+      if current_user.admin? # check if current user is an admin
+        if intervention_record.update(intervention_record_params)
+          render json: intervention_record
+        else
+          render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
+        end
+      else # if the user is not an admin, disallow update to the status attribute
+        if intervention_record_params.key?(:status)
+          render json: { error: "Only admin users can update status" }, status: :unprocessable_entity
+        else
+          if intervention_record.update(intervention_record_params)
             render json: intervention_record
           else
             render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
           end
         end
       end
+    end
+    
 
 
       def destroy
@@ -77,9 +81,11 @@ class InterventionRecordsController < ApplicationController
         render json: { error: "Validity errors" }, status: :unprocessable_entity
     end
 
-    def authorize_unauthenticated
-        @current_user = User.find_by(id: session[:user_id])
-        @current_user ||= User.find_by(id: payload["user_id"]) if request.headers["Authorization"].present?
-      end
+   
+  #   def authorize_unauthenticated
+  #     unless current_user
+  #       render json: { error: "You are not logged in" }, status: :unauthorized
+  #   end
+  # end
 
 end

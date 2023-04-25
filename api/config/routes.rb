@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   # Remain Logged in
   get "/me", to: "users#show"
 
-  # Change password
-  patch "/users/:id/change_password", to: "users#change_password"
+  # # Change password
+  # patch "/users/:id/change_password", to: "users#change_password"
 
   # Login/Logout Sessions
   post "/login", to: "sessions#create"

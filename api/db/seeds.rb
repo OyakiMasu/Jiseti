@@ -42,7 +42,7 @@ RedFlagRecord.create!(
   description: "Workers and equipment were only seen at the site for a month." ,
   latitude: -50.044345 ,
   longitude: -178.674892 ,
-  image_url: 'https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg',
+  image_url: 'https://www.kenyans.co.ke/files/styles/article_style/public/images/media/Kamariny%20stadium.jpg?itok=4whBnFtL',
   user_id: User.pluck(:id).sample,
   status: 0
 )
@@ -60,7 +60,7 @@ RedFlagRecord.create!(
   description: "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still." ,
   latitude: -60.044345 ,
   longitude: -148.674892 ,
-  image_url: 'https://nation.africa/resource/image/4193012/landscape_ratio2x1/960/480/d22c501cd3287e1000bae1d77a41dda4/DO/dais-pix.jpg',
+  image_url: 'https://www.roadex.org/wp-content/uploads/elearning/environmental/4/421a.jpg',
   user_id: User.pluck(:id).sample,
   status: 0
 )

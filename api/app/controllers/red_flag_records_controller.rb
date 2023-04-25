@@ -1,7 +1,7 @@
 class RedFlagRecordsController < ApplicationController
     #Authorization
-    before_action :authorize, only: [:create, :update, :destroy]
-    before_action :authorize_unauthenticated, only: [:index, :show]
+    # before_action :authorize, only: [:create, :update, :destroy]
+    # before_action :authorize_unauthenticated, only: [:index, :show]
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -18,37 +18,45 @@ class RedFlagRecordsController < ApplicationController
         render json: red_flag_records, status: :ok
      end
 
-    #POST /red_flag_records
-    def create
-        red_flag_record = RedFlagRecord.create(red_flag_record_params)
-        red_flag_record.user = current_user
-
-        if red_flag_record.save
-            render json: red_flag_record, status: :created
-        else
-            render json: { error: red_flag_record.errors.full_messages }, status: :unprocessable_entity
-        end
-              
+    # POST /red_flag_records
+  def create
+    red_flag_record = RedFlagRecord.create(red_flag_record_params)
+    if current_user
+      red_flag_record.user = current_user
     end
 
-    # PATCH/ red_flag_records
-    def update
-        red_flag_record = RedFlagRecord.find(params[:id])
-        if current_user.admin? # check if current user is an admin
-          if red_flag_record.update(red_flag_record_params)
-            render json: red_flag_record
-          else
-            render json: { errors: red_flag_record.errors.full_messages }, status: :unprocessable_entity
-          end
-        else # if the user is not an admin, disallow update to the status attribute
-          red_flag_record_params_without_status = red_flag_record_params.except(:status)
-          if red_flag_record.update(red_flag_record_params_without_status)
-            render json: red_flag_record
-          else
-            render json: { errors: red_flag_record.errors.full_messages }, status: :unprocessable_entity
-          end
-        end
+    if red_flag_record.save
+      render json: red_flag_record, status: :created
+    else
+      render json: { error: red_flag_record.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+
+  # PATCH/ red_flag_records
+# PATCH/ red_flag_records
+def update
+  red_flag_record = RedFlagRecord.find(params[:id])
+  if current_user.admin? # check if current user is an admin
+    if red_flag_record.update(red_flag_record_params)
+      render json: red_flag_record
+    else
+      render json: { errors: red_flag_record.errors.full_messages }, status: :unprocessable_entity
+    end
+  else # if the user is not an admin, disallow update to the status attribute
+    if red_flag_record_params.key?(:status)
+      render json: { error: "Only admin users can update status" }, status: :unprocessable_entity
+    else
+      if red_flag_record.update(red_flag_record_params)
+        render json: red_flag_record
+      else
+        render json: { errors: red_flag_record.errors.full_messages }, status: :unprocessable_entity
       end
+    end
+  end
+end
+
+
 
 
     # DELETE /red_flag_records/:id
@@ -78,11 +86,11 @@ class RedFlagRecordsController < ApplicationController
         render json: { error: "Validity errors" }, status: :unprocessable_entity
     end
     
-    def authorize_unauthenticated
-        @current_user = User.find_by(id: session[:user_id])
-        @current_user ||= User.find_by(id: payload["user_id"]) if request.headers["Authorization"].present?
-      end
-    
+  #   def authorize_unauthenticated
+  #     unless current_user
+  #       render json: { error: "You are not logged in" }, status: :unauthorized
+  #   end
+  # end
 
 
 end
