@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/about.css'
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className='aboutimg'>
 
        <center><h1>About Us</h1></center>
 

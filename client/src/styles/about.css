@@ -1,0 +1,34 @@
+.aboutimg{
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+/* background: url(../assets/about.jpg); */
+width: 100%;
+height: 100vh;
+box-sizing: border-box;
+position: fixed;
+bottom: 0;
+right: 0;
+left: 0;
+top: 0;
+margin:0%;
+background-size: cover;
+background-position:center;
+background-attachment: fixed;
+overflow-x: hidden;
+overflow-y: auto;
+}
+.about{
+  width: 900px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 10px;
+  background: lightgrey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+}
+p.about{
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 40px;
+}

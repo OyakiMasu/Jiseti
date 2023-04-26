@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/reports.css'
 
 function Report() {
   const [intervention, setIntervention] = useState([]);
@@ -18,32 +19,37 @@ function Report() {
       });
   }, []);
   return (
-    <center>
-      <center><h1>REPORTS</h1></center>
-      {intervention.map((records, index) => (
+     <div className='grand'>
 
-        <div key={index}>
-          <h2 className='cardtitle' >{records.title}</h2>
-          <img className='imgtag' src={records.image_url} alt={records.title} />
-          <p className='cardDescription'>{records.description}</p>
-          <p className='cardGeolocation'>{records.latitude}</p>
-          <p className='cardGeolocation-1'>{records.longitude}</p>
-          <p className='cardStatus'>{records.status}</p>
-          {redflagrecords.map((records, index) => (
-        <div key={index}>
-        <h2 className='cardtitle' >{records.title}</h2>
-          <img className='imgtag' src={records.image_url} alt={records.title} />
-          <p className='cardDescription'>{records.description}</p>
-          <p className='cardGeolocation'>{records.latitude}</p>
-          <p className='cardGeolocation-1'>{records.longitude}</p>
-          <p className='cardStatus'>{records.status}</p>
-            </div>
-          ))}
-        </div>
-      ))}
-          <a 
-           href='/myreports'> Report</a>
-    </center>
+      <center><h2>REPORTS</h2></center>
+      <center><a href='/myreports'> Report</a></center>
+          <div className='box'>
+
+                {intervention.map((records, index) => (
+
+                  <div className='box' key={index}>
+                    <h2 className='cardtitle' >{records.title}</h2>
+                    <img className='imgtag' src={records.image_url} alt={records.title} />
+                    <p className='cardDescription'>{records.description}</p>
+                    <p className='cardGeolocation'>{records.latitude}</p>
+                    <p className='cardGeolocation-1'>{records.longitude}</p>
+                    <p className='cardStatus'>{records.status}</p>
+                    {redflagrecords.map((records, index) => (
+                      
+                  <div className='box' key={index}>
+                  <h2 className='cardtitle' >{records.title}</h2>
+                    <img className='imgtag' src={records.image_url} alt={records.title} />
+                    <p className='cardDescription'>{records.description}</p>
+                    <p className='cardGeolocation'>{records.latitude}</p>
+                    <p className='cardGeolocation-1'>{records.longitude}</p>
+                    <p className='cardStatus'>{records.status}</p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+     </div>
+    
   );
 }
 export default Report;

@@ -61,59 +61,61 @@ const Report = () => {
         .catch(error => console.log(error));
     };
   return (
-    <center>
+    <div>
+      <center>
       <h2>Add a Report</h2>
-      <form className="reportform" onSubmit={handleSubmit}>
-       <label>
-          Type:
-          <select value={type} onChange={(e) => setType(e.target.value)} required>
-            <option value="red_flag">Red Flag</option>
-            <option value="intervention">Intervention</option>
-          </select>
-        </label>
-        <br/>
-        <label>
-        Title:
-          <input placeholder="Add title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)} required/>
-        </label>
-        <br/>
-        <label>
-          Description:
-          <textarea value={description}
-          onChange={(e) => setDescription(e.target.value)} required/>
-        </label>
-        <br/>
-        <label>
-        Location:
-        <input placeholder="Add location"
-        type="text" value={location}
-        onChange={(e) => setLocation(e.target.value)} required/>
-        <button type="button" onClick={() => handleLocationClick(location)}>Geocode</button>
-        </label>
-        <br/>
-        <label>
-          Image:
-          <input type="text"
-          onChange={(e) => setImage(e.target.value)} />
-        </label>
-        <br/>
-        <label>
-          STATUS:
-          <br />
-          <input type="radio" name="status" value="under_investigation" onChange={(e) => setStatus(e.target.value)}required/> Under Investigation
-          <br />
-          <input type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
-          <br />
-          <input type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-      <a className='' href='/report'>My Reports</a>
-    </center>
+      <a className='reportlink' href='/report'>My Reports</a>
+      </center>
+
+      <div className="reportcard"> 
+          <form className="reportform" onSubmit={handleSubmit}>
+          <label className="labelCo">
+              Type:
+              <select value={type} onChange={(e) => setType(e.target.value)} required>
+                <option value="red_flag">Red Flag</option>
+                <option value="intervention">Intervention</option>
+              </select>
+            </label>
+            <br/>
+            <label className="labelCo">
+            Title:
+              <input placeholder="Add title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)} required/>
+            </label>
+            <br/>
+            <label className="labelCo">
+              Description:
+              <textarea value={description}
+              onChange={(e) => setDescription(e.target.value)} required/>
+            </label>
+            <br/>
+            <label className="labelCo">
+            Location:
+            <input placeholder="Add location"
+            type="text" value={location}
+            onChange={(e) => setLocation(e.target.value)} required/>
+            <button type="button" onClick={() => handleLocationClick(location)}>Geocode</button>
+            </label>
+            <br/>
+            <label className="labelCo">
+              Image:
+              <input placeholder="Add image url" type="text"
+              onChange={(e) => setImage(e.target.value)} />
+            </label>
+            
+            <label className="Radio">
+              STATUS:
+              <input className="Radio" type="radio" name="status" value="under_investigation" onChange={(e) => setStatus(e.target.value)}required/> Under Investigation
+              <input className="Radio" type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
+              <input className="Radio" type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
+            </label> 
+          </form>
+
+          <button type="submit">Submit</button>
+      </div>
+    </div>
   );
 };
 export default Report;

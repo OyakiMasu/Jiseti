@@ -1,4 +1,26 @@
-.reportfom{
-  width: fit-content;
-  height: fit-content;
+form.reportfom{
+ margin: 0%;
+ padding: 0%;
+}
+.Radio{
+  margin: 0%;
+  padding: 10px;
+  width: 1.5em;
+  display: inline-flex;
+  background: #88eeec;
+
+}
+.reportcard{
+  margin: auto;
+  width: 500px;
+  margin-top: 6%;
+  padding:25px;
+  background: #88eeec;
+  border-radius: 0.4em;
+  box-shadow: 0.3em 0.3em 0.7em #00000015;
+  transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: rgb(250, 250, 250) 0.2em solid  
+}
+.labelCo{
+  background: #88eeec;
 }
