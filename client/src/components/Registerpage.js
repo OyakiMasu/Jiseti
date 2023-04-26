@@ -36,7 +36,7 @@ function Registerpage() {
         }
     return(
             <div className="signimg">
-                <form className="sigform" onSubmit={e => handleSubmit(e)}>
+                <form className="signform" onSubmit={e => handleSubmit(e)}>
                      <h3 className="title">signup</h3>
                     <label>Username:</label>
                     <input placeholder="username" type="text" value={username} onChange={e => SetUsername(e.target.value)}required></input>
