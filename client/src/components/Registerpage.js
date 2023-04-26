@@ -1,65 +1,53 @@
-import React, { useState } from "react";
-import '../styles/signup.css'
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
+import '../styles/signup.css'
 
 function Registerpage() {
-
     const navigate = useNavigate()
-    const [first, SetFirst] = useState("")
-    const [last, SetLast] = useState("")
-    const [mail, SetMail] = useState("")
-    const [pass, SetPass] = useState("")
-
-    function handleAdd(e) {
+    const { setUserId } = useContext(AuthContext);
+    const [username, SetUsername] = useState("")
+    const [email, SetEmail] = useState("")
+    const [password, SetPassword] = useState("")
+    function handleSubmit(e) {
         e.preventDefault()
-
-    fetch('https://move-7msy.onrender.com/auth/register', {
-    method: 'POST',
-    body: JSON.stringify({
-        first_name: first,
-        last_name: last,
-        email: mail,
-        password: pass
-    })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        navigate("/login")
-    })
-    .catch(error => console.error(error))
-    }
-
-
+        console.log("Submitting signup form with: ");
+        console.log("username: ", username);
+        console.log("email: ", email);
+        console.log("password: ", password);
+        fetch("https://zaki-dev-jiseti.onrender.com/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              username: username,
+              email: email,
+              password: password
+            })
+          })
+            .then(response => response.json())
+            .then(data => {
+              setUserId(data.userId);
+              console.log("userId in Registerpage component: ", data.userId);
+              navigate("/login");
+            })
+            .catch(error => console.error(error));
+        }
     return(
-
-            <div>
-
-                <form className="signup" onSubmit={e => handleAdd(e)}>
-                
+            <div className="signimg">
+                <form className="sigform" onSubmit={e => handleSubmit(e)}>
                      <h3 className="title">signup</h3>
-
-                    <label>
-                    firstname:
-                    <input placeholder="Firstname" className="emailinput"  type="text" value={first} onChange={e => SetFirst(e.target.value)}required></input>
-                    </label>
-
-                    <label>lastname:</label>
-                    <input placeholder="Lastname"  className="passinput"  type="text" value={last} onChange={e => SetLast(e.target.value)} required></input>
-
+                    <label>Username:</label>
+                    <input placeholder="username" type="text" value={username} onChange={e => SetUsername(e.target.value)}required></input>
                     <label>Email:</label>
-                    <input placeholder="Email"  className="signemail" type="text" value={mail} onChange={e => SetMail(e.target.value)} required></input>
-
+                    <input type="text" placeholder="email" value={email} onChange={e => SetEmail(e.target.value)} required></input>
                     <label>Password:</label>
-                    <input  className="passwordinput"  type="text" placeholder="Password" value={pass} onChange={e => SetPass(e.target.value)} required></input>
-
-                    <input className="adduser" type="submit" value="Add User" required></input>
-                    
+                    <input type="password" placeholder="Password" value={password} onChange={e => SetPassword(e.target.value)} required></input>
+                    <input className="button"  type="submit" value="Add User" required></input>
                     <a href="/login">Login</a>
                 </form>
             </div>
-
     )
 }
-
 export default Registerpage;

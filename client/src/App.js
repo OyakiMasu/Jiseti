@@ -4,7 +4,7 @@ import Registerpage from './components/Registerpage';
 import AboutUs from './components/about';
 import Report from './components/report';
 import Reportpage from './components/reportpage';
-import Dashboard from './components/Dashbord';
+import MyReports from './components/myreports';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/about" element={<AboutUs/>}></Route>
         <Route exact path="/report" element={<Report/>}></Route>
         <Route exact path="/reportpage" element={<Reportpage/>}></Route>
-        <Route exact path="/dashboard" element={<Dashboard/>}></Route>
+        <Route exact path="/myreports" element={<MyReports/>}></Route>
 
       </Routes>
     </div>

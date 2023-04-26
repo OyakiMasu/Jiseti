@@ -1,57 +1,60 @@
-import '../styles/login.css'
-import React, { useState } from "react";
-import './login.css'
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
+import '../styles/login.css'
+import { AuthContext } from "../AuthContext";
 
 function Login() {
-
     const navigate = useNavigate()
-    const [user_email, SetUser_email] = useState("")
-    const [user_password, SetUser_password] = useState("")
-
+    const { setUserId } = useContext(AuthContext);
+    const [username, SetUsername] = useState("")
+    const [email, SetEmail] = useState("")
+    const [password, SetPassword] = useState("")
     function handleSubmit(e) {
-        e.preventDefault()
-     
-    fetch("https://move-7msy.onrender.com/auth/login", {
-        method: 'POST',
+      e.preventDefault();
+      console.log("login form submitted with", { username, email, password });
+      fetch("https://zaki-dev-jiseti.onrender.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-        email: user_email,
-        password: user_password
+          username: username,
+          email: email,
+          password: password
+        })
       })
-    })
-    .then((response) => response.json())
-    .then((data) => {
-          if (data.message === "Login success!") {
-          alert(data.message)
-          navigate("/report")
-        } else if (data.message === "Invalid email or password"){
-            alert(data.message)
-            redirect('/login')
-        }})
-      }
-
+        .then(response => response.json())
+        .then(data => {
+          console.log("login response", data);
+          localStorage.setItem("userId",data.userId);
+          console.log("userId in Login component: ", data.userId);
+          navigate("/report");
+        })
+        .catch(error => console.error(error));
+    }
     return(
-
-        <center >
-            <form className="login"  onSubmit={e => handleSubmit(e)}>
-
+        <div className="loginimg">
+            <form className="logform" onSubmit={e => handleSubmit(e)}>
                 <h3 className="title">Login</h3>
-
-                <label><b>Email</b></label>
-                <input className="emailinput" type="text" placeholder="email" value={user_email} onChange={e => SetUser_email(e.target.value)} required></input>
-                <label><b>Password</b></label>
-                    
-                <input className="passinput" type="text" placeholder="password." value={user_password} onChange={e => SetUser_password(e.target.value)} required></input>
-
+                <label>username:</label>
+                <input className="loginput" type="text" placeholder="username" value={username} onChange={e => SetUsername(e.target.value)} required></input>
+                <label>email:</label>
+                <input className="loginput" type="text" placeholder="email" value={email} onChange={e => SetEmail(e.target.value)} required></input>
+                <label>Password:</label>
+                <input className="loginput" type="password" placeholder="password" value={password} onChange={e => SetPassword(e.target.value)} required></input>
+               
                     <input className="button" type="submit" ></input>
-
-                    <a href="/registerpage" className="signroute">Signup</a>
-
+                    <a href="/registerpage">Signup</a>
              </form>
-        </center>
-
+        </div>
     )
 }
-
 export default Login;
+
+
+
+
+
+
+

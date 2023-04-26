@@ -1,33 +1,49 @@
 import React, { useState, useEffect } from 'react';
 
 function Report() {
-  const [news, setNews] = useState([]);
-
+  const [intervention, setIntervention] = useState([]);
+  const [redflagrecords, setRedFlag] = useState([])
   useEffect(() => {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=14391d98e10b47159644a06bab763f27')
+    fetch('https://zaki-dev-jiseti.onrender.com/intervention_records')
       .then(response => response.json())
       .then(data => {
-        setNews(data.articles);
+       setIntervention(data);
       });
   }, []);
-
+  useEffect(() => {
+    fetch('https://zaki-dev-jiseti.onrender.com/red_flag_records')
+      .then(response => response.json())
+      .then(data => {
+       setRedFlag(data);
+      });
+  }, []);
   return (
-    <center className='card'>
+    <center>
+      <center><h1>REPORTS</h1></center>
+      {intervention.map((records, index) => (
 
-      <h1 className='reporttitle'>REPORTS</h1>
-
-      {news.map((article, index) => (
         <div key={index}>
-
-          <img className='imgtag' src={article.urlToImage} alt={article.title} />
-          <h2 className='cardtitle' >{article.title}</h2>
+          <h2 className='cardtitle' >{records.title}</h2>
+          <img className='imgtag' src={records.image_url} alt={records.title} />
+          <p className='cardDescription'>{records.description}</p>
+          <p className='cardGeolocation'>{records.latitude}</p>
+          <p className='cardGeolocation-1'>{records.longitude}</p>
+          <p className='cardStatus'>{records.status}</p>
+          {redflagrecords.map((records, index) => (
+        <div key={index}>
+        <h2 className='cardtitle' >{records.title}</h2>
+          <img className='imgtag' src={records.image_url} alt={records.title} />
+          <p className='cardDescription'>{records.description}</p>
+          <p className='cardGeolocation'>{records.latitude}</p>
+          <p className='cardGeolocation-1'>{records.longitude}</p>
+          <p className='cardStatus'>{records.status}</p>
+            </div>
+          ))}
         </div>
       ))}
-          <a className='reportlink' href='/reportpage'> Report</a>
-
+          <a 
+           href='/myreports'> Report</a>
     </center>
   );
 }
-
 export default Report;
-
