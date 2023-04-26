@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
     # Authorization
     before_action :authorize_unauthenticated, only: :create
+    before_action :current_user
 
     #Login
     def create
