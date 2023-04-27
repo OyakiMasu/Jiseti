@@ -4,15 +4,19 @@ import '../styles/Myreport.css'
 import { AuthContext } from "../AuthContext";
 
 const MyReports = () => {
+  const token = localStorage.getItem('token')
   const [reports, setReports] = useState([]);
   const storedId = localStorage.getItem("userId");
   const { isLoggedIn } = useContext(AuthContext);
+
+  // console.log(token)
+
   useEffect(() => {
     // const storedReports = JSON.parse(localStorage.getItem(`user-${storedId}-reports`) || '[]');
     // if (storedReports.length) {
     //   setReports(storedReports);
     // } else {
-      fetch(`https://zaki-dev-jiseti.onrender.com/red_flag_records?user_id={storeId}`)
+      fetch(`http://localhost:3000/red_flag_records?user_id={storeId}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -29,6 +33,7 @@ const MyReports = () => {
     // }
   }, []);
   // console.log(storedId);
+
   const handleEdit = (reportId) => {
     console.log(`Editing report with id ${reportId} for user ${storedId}`);
     const report = reports.find(r => r.id === reportId);
@@ -45,6 +50,7 @@ const MyReports = () => {
     // populate the form fields with the existing report data
     const titleInput = prompt('Enter updated title:', report.title);
     const descriptionInput = prompt('Enter updated description:', report.description);
+    
     let reportObj = {
       title: titleInput,
       description: descriptionInput
@@ -53,10 +59,14 @@ const MyReports = () => {
     // report.title = titleInput;
     // report.description = descriptionInput;
     // send a PUT request to update the report data
-    fetch(`https://zaki-dev-jiseti.onrender.com/red_flag_records/{report.id}`, {
+    console.log(token)
+    
+    fetch(`http://localhost:3000/red_flag_records/${report.id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json' },
+        'Content-Type': 'application/json',
+         Authorization: 'Bearer' + token },
+
       body: JSON.stringify(reportObj),
     })
       .then(response => response.json())
@@ -70,6 +80,8 @@ const MyReports = () => {
       })
       .catch(error => console.error('Error updating report:', error));
   };
+
+
   // ...
   useEffect(() => {
     // ...
@@ -79,6 +91,9 @@ const MyReports = () => {
     // implement delete functionality here
     console.log(`Deleting report with id ${report.id}`);
   };
+
+
+
   return (
     <center>
       <h2>My Reports</h2>

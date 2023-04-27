@@ -2,7 +2,9 @@ class RedFlagRecordsController < ApplicationController
     #Authorization
     # before_action :authorize, only: [:create, :update, :destroy]
     # before_action :authorize_unauthenticated, only: [:index, :show]
-    before_action :current_user
+
+    before_action :verify_auth, only: [:create]
+
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -76,12 +78,11 @@ class RedFlagRecordsController < ApplicationController
       return
     end
 
-    if redflag.update( red_flag_record_params)
+    if redflag.update(red_flag_record_params)
       render json: {message: "Updated successfully"}, status: :ok
     else
       render json: {message: "Failed"}, status: :unprocessable_entity
     end
-
 
   end
 

@@ -11,8 +11,13 @@ const Report = () => {
   const [type, setType] = useState("")
   const { userId } = useContext(AuthContext);
   const storedId = localStorage.getItem("userId")
+  const token = localStorage.getItem('token')
+
+  // console.log(token)
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const reportObj = {
       type,
       title,
@@ -25,13 +30,17 @@ const Report = () => {
     };
     // console.log("userId: ", userId);
     console.log(reportObj);
-    fetch("https://zaki-dev-jiseti.onrender.com/red_flag_records", {
+
+    fetch("http://localhost:3000/red_flag_records", {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
       },
+      
       body: JSON.stringify(reportObj)
     })
+
     .then(response => {
       console.log("response:", response);
       if (!response.ok) {
@@ -64,7 +73,7 @@ const Report = () => {
     <div>
       <center>
       <h2>Add a Report</h2>
-      <a className='reportlink' href='/report'>My Reports</a>
+      <a className='reportlink' href='/myreports'>My Reports</a>
       </center>
 
       <div className="reportcard"> 
@@ -111,9 +120,12 @@ const Report = () => {
               <input className="Radio" type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
               <input className="Radio" type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
             </label> 
+
+
+
+            <button type="submit">Submit</button>
           </form>
 
-          <button type="submit">Submit</button>
       </div>
     </div>
   );

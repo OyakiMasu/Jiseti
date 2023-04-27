@@ -15252,3 +15252,1091 @@ Processing by RedFlagRecordsController#index as */*
 Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 2129)
 
 
+Started POST "/signup" for 127.0.0.1 at 2023-04-27 13:01:17 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"dave", "email"=>"dave@mail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"dave", "email"=>"dave@mail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f6b28ba6540>, params: {"username"=>"dave", "email"=>"dave@mail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"dave", "email"=>"dave@mail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "dave"], ["password_digest", "[FILTERED]"], ["email", "dave@mail.com"], ["user_type", 0], ["created_at", "2023-04-27 10:01:17.401223"], ["updated_at", "2023-04-27 10:01:17.401223"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 222ms (Views: 0.4ms | ActiveRecord: 13.7ms | Allocations: 19044)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-27 13:01:29 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"dave", "email"=>"dave@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"dave", "email"=>"dave@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "dave"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 205ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1917)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:01:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 41ms (Views: 32.6ms | ActiveRecord: 0.8ms | Allocations: 22122)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:01:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 2129)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:01:36 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 2143)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 13:06:22 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"test", "description"=>"testing\n", "latitude"=>"Nairobi", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"test", "description"=>"testing\n", "latitude"=>"Nairobi", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (2.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "test"], ["description", "testing\n"], ["latitude", 0.0], ["longitude", nil], ["status", 0], ["image_url", "URL"], ["user_id", 7], ["created_at", "2023-04-27 10:06:22.819602"], ["updated_at", "2023-04-27 10:06:22.819602"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+Completed 201 Created in 54ms (Views: 0.6ms | ActiveRecord: 14.0ms | Allocations: 8266)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:06:37 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms | Allocations: 2286)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:06:37 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 11ms (Views: 10.9ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:06:42 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:07:24 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:07:24 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.5ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:07:44 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.4ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:08:02 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 2285)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:08:13 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:08:21 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:09:47 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms | Allocations: 2284)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (11.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (11.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-27 10:10:03.442296"], ["updated_at", "2023-04-27 10:10:03.442296"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-04-27 10:10:03.471653"], ["updated_at", "2023-04-27 10:10:03.471653"]]
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (11.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (11.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-27 10:10:03.721407"], ["updated_at", "2023-04-27 10:10:03.721407"]]
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-04-27 10:10:03.746370"], ["key", "environment"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-04-27 10:10:03.769772"], ["updated_at", "2023-04-27 10:10:03.769772"]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "gussie"], ["password_digest", "[FILTERED]"], ["email", "pearlie@gislason.example"], ["user_type", 0], ["created_at", "2023-04-27 10:10:04.025863"], ["updated_at", "2023-04-27 10:10:04.025863"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "elvina"], ["password_digest", "[FILTERED]"], ["email", "raymundo@parisian.test"], ["user_type", 0], ["created_at", "2023-04-27 10:10:04.041963"], ["updated_at", "2023-04-27 10:10:04.041963"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "hugh.powlowski"], ["password_digest", "[FILTERED]"], ["email", "grace_hermiston@bednar.example"], ["user_type", 0], ["created_at", "2023-04-27 10:10:04.058844"], ["updated_at", "2023-04-27 10:10:04.058844"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "thomasena.schmeler"], ["password_digest", "[FILTERED]"], ["email", "russ.carter@mosciski.example"], ["user_type", 0], ["created_at", "2023-04-27 10:10:04.074509"], ["updated_at", "2023-04-27 10:10:04.074509"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "min.muller"], ["password_digest", "[FILTERED]"], ["email", "phyllis.casper@heller-bednar.example"], ["user_type", 0], ["created_at", "2023-04-27 10:10:04.090058"], ["updated_at", "2023-04-27 10:10:04.090058"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.5ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Karau"], ["description", "Traffic officers taking bribes "], ["latitude", -20.044345], ["longitude", -150.674892], ["status", 0], ["image_url", "https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"], ["user_id", 2], ["created_at", "2023-04-27 10:10:04.148308"], ["updated_at", "2023-04-27 10:10:04.148308"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lack of Social amenities"], ["description", "Local hospital in bad shape"], ["latitude", -44.044345], ["longitude", -101.674892], ["status", 0], ["image_url", "https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg"], ["user_id", 4], ["created_at", "2023-04-27 10:10:04.171397"], ["updated_at", "2023-04-27 10:10:04.171397"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.6ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bribing of Health Inspector"], ["description", "Despite several irregularities during Inspection the manager and Health inspector agreed to a compromise"], ["latitude", -19.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 1], ["created_at", "2023-04-27 10:10:04.193758"], ["updated_at", "2023-04-27 10:10:04.193758"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.6ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Stalled Stadium Construction"], ["description", "Workers and equipment were only seen at the site for a month."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://www.kenyans.co.ke/files/styles/article_style/public/images/media/Kamariny%20stadium.jpg?itok=4whBnFtL"], ["user_id", 5], ["created_at", "2023-04-27 10:10:04.220083"], ["updated_at", "2023-04-27 10:10:04.220083"]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Judicial system"], ["description", "The judge in my case was spotted with the defendant outside courtroom."], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 4], ["created_at", "2023-04-27 10:10:04.246834"], ["updated_at", "2023-04-27 10:10:04.246834"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dilapidated Road Work"], ["description", "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still."], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.roadex.org/wp-content/uploads/elearning/environmental/4/421a.jpg"], ["user_id", 1], ["created_at", "2023-04-27 10:10:04.271349"], ["updated_at", "2023-04-27 10:10:04.271349"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Forceful Eviction"], ["description", "A developer came with Equipment and Personell and demolished businesses"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://gdb.voanews.com/C1DCC61C-A18D-47E5-810A-DB414509157B_cx0_cy9_cw0_w1597_n_r1_st_s.jpg"], ["user_id", 1], ["created_at", "2023-04-27 10:10:04.289441"], ["updated_at", "2023-04-27 10:10:04.289441"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Banditry"], ["description", "Heavy Clashes between two pastoralists communities that are heavily armed"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.aljazeera.com/wp-content/uploads/2016/12/20b77a41a394462b9a38f1e4c7883a81_18.jpeg?resize=770%2C513&quality=80"], ["user_id", 3], ["created_at", "2023-04-27 10:10:04.314263"], ["updated_at", "2023-04-27 10:10:04.314263"]]
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Embezzlement of funds"], ["description", "Company CEO misappropriated customer pensions"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://pointofview.net/wp-content/uploads/2022/11/FTX-crash-1024x577.png"], ["user_id", 5], ["created_at", "2023-04-27 10:10:04.334894"], ["updated_at", "2023-04-27 10:10:04.334894"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Public Hazard"], ["description", " Endangerment of  public safety and life"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1"], ["user_id", 4], ["created_at", "2023-04-27 10:10:04.352904"], ["updated_at", "2023-04-27 10:10:04.352904"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:10:18 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 25ms (Views: 14.5ms | ActiveRecord: 0.8ms | Allocations: 23626)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:11:56 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 1624)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:12:07 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.1ms | Allocations: 1624)
+
+
+Started POST "/signup" for 127.0.0.1 at 2023-04-27 13:12:23 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"zaki", "email"=>"zaki@mail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fb900f67ca8>, params: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"zaki", "email"=>"zaki@mail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "zaki"], ["password_digest", "[FILTERED]"], ["email", "zaki@mail.com"], ["user_type", 0], ["created_at", "2023-04-27 10:12:23.550528"], ["updated_at", "2023-04-27 10:12:23.550528"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (37.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 242ms (Views: 0.2ms | ActiveRecord: 38.2ms | Allocations: 17725)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-27 13:12:41 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "zaki"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 201ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1904)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:12:41 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 1610)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:12:41 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 1610)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:13:12 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1624)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:13:12 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1610)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:14:19 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 1610)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 13:14:19 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 1610)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 13:15:26 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test 1", "description"=>"Testing", "latitude"=>"-1.2723271", "longitude"=>" 36.7996878", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"6", "red_flag_record"=>{"title"=>"Test 1", "description"=>"Testing", "latitude"=>"-1.2723271", "longitude"=>" 36.7996878", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"6"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Test 1"], ["description", "Testing"], ["latitude", -1.272327], ["longitude", 36.799688], ["status", 0], ["image_url", "URL"], ["user_id", 6], ["created_at", "2023-04-27 10:15:26.524511"], ["updated_at", "2023-04-27 10:15:26.524511"]]
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (37.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:23:in `create'
+Completed 201 Created in 61ms (Views: 1.4ms | ActiveRecord: 37.5ms | Allocations: 8294)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:15:31 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 1794)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:15:51 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1792)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 13:17:48 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1792)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-27 16:07:40 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "masu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "masu@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 401 Unauthorized in 14ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 8034)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:07:40 +0300
+Processing by RedFlagRecordsController#index as */*
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 107)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:07:40 +0300
+Processing by RedFlagRecordsController#index as */*
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:11:21 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:11:21 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:12:27 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:12:27 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:12:55 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:12:55 +0300
+  
+NameError (undefined local variable or method `update' for RedFlagRecordsController:Class):
+  
+app/controllers/red_flag_records_controller.rb:6:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:14:54 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 63ms (Views: 33.6ms | ActiveRecord: 1.9ms | Allocations: 23165)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:14:54 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 1728)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:15:08 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.1ms | Allocations: 1742)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:15:08 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 1728)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:15:45 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"test", "description"=>"testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"undefined", "red_flag_record"=>{"title"=>"test", "description"=>"testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"undefined"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+Completed 422 Unprocessable Entity in 275ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 362268)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:19:06 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"test", "description"=>"testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"undefined", "red_flag_record"=>{"title"=>"test", "description"=>"testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"undefined"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.6ms | Allocations: 395)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/application_controller.rb:41:in `decode'
+app/controllers/application_controller.rb:57:in `save_user_id'
+app/controllers/application_controller.rb:82:in `verify_auth'
+Started POST "/login" for 127.0.0.1 at 2023-04-27 16:21:28 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "masu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "masu@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 401 Unauthorized in 15ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 5535)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:21:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.6ms | Allocations: 3912)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:21:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 1729)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-27 16:27:02 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"masu", "email"=>"masu@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "masu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "masu@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 401 Unauthorized in 6ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 1728)
+
+
+Started POST "/signup" for 127.0.0.1 at 2023-04-27 16:27:29 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"goku", "email"=>"goku@mail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"goku", "email"=>"goku@mail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f7d648110a8>, params: {"username"=>"goku", "email"=>"goku@mail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"goku", "email"=>"goku@mail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "goku"], ["password_digest", "[FILTERED]"], ["email", "goku@mail.com"], ["user_type", 0], ["created_at", "2023-04-27 13:27:29.531401"], ["updated_at", "2023-04-27 13:27:29.531401"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 270ms (Views: 0.2ms | ActiveRecord: 11.6ms | Allocations: 17610)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-27 16:27:49 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"goku", "email"=>"goku@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"goku", "email"=>"goku@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "goku"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 225ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1364)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:27:49 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 1774)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 16:27:49 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1729)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:29:22 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"testing", "latitude"=>"Nairobi", "image_url"=>"Url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"testing", "latitude"=>"Nairobi", "status"=>"under_investigation", "image_url"=>"Url", "user_id"=>"7"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 415)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/application_controller.rb:41:in `decode'
+app/controllers/application_controller.rb:57:in `save_user_id'
+app/controllers/application_controller.rb:82:in `verify_auth'
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:31:02 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"testing", "latitude"=>"Nairobi", "image_url"=>"Url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"testing", "latitude"=>"Nairobi", "status"=>"under_investigation", "image_url"=>"Url", "user_id"=>"7"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 415)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/application_controller.rb:41:in `decode'
+app/controllers/application_controller.rb:57:in `save_user_id'
+app/controllers/application_controller.rb:82:in `verify_auth'
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:32:21 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"Testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"Testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.8ms | Allocations: 379)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/application_controller.rb:41:in `decode'
+app/controllers/application_controller.rb:57:in `save_user_id'
+app/controllers/application_controller.rb:82:in `verify_auth'
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:33:59 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"Testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"Testing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Test"], ["description", "Testing"], ["latitude", -1.283253], ["longitude", 36.817245], ["status", 0], ["image_url", "URL"], ["user_id", 7], ["created_at", "2023-04-27 13:33:59.562413"], ["updated_at", "2023-04-27 13:33:59.562413"]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+Completed 201 Created in 38ms (Views: 0.3ms | ActiveRecord: 18.5ms | Allocations: 11464)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:35:15 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms | Allocations: 1984)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:35:22 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 1910)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:36:21 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"Tesing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"Tesing", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.6ms | Allocations: 379)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/application_controller.rb:41:in `decode'
+app/controllers/application_controller.rb:57:in `save_user_id'
+app/controllers/application_controller.rb:82:in `verify_auth'
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:37:09 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 89)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:40:58 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"Test", "description"=>"TEsting", "latitude"=>"-1.2833448", "longitude"=>" 36.8175325", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"Test", "description"=>"TEsting", "latitude"=>"-1.2833448", "longitude"=>" 36.8175325", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mRedFlagRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Test"], ["description", "TEsting"], ["latitude", -1.283345], ["longitude", 36.817533], ["status", 0], ["image_url", "URL"], ["user_id", 7], ["created_at", "2023-04-27 13:40:58.410461"], ["updated_at", "2023-04-27 13:40:58.410461"]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+Completed 201 Created in 88ms (Views: 0.8ms | ActiveRecord: 11.3ms | Allocations: 13560)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:41:47 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:42:21 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 1.4ms | Allocations: 7747)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:43:51 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"RECORD", "description"=>"tEST 2", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "image_url"=>"URL", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"RECORD", "description"=>"tEST 2", "latitude"=>"-1.2832533", "longitude"=>" 36.8172449", "status"=>"under_investigation", "image_url"=>"URL", "user_id"=>"7"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:44:19 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 2093)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:48:34 +0300
+  
+ArgumentError (:verify_auth must be an Exception class or a String referencing an Exception class):
+  
+app/controllers/red_flag_records_controller.rb:10:in `<class:RedFlagRecordsController>'
+app/controllers/red_flag_records_controller.rb:4:in `<main>'
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:49:24 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"33333", "description"=>"testing", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "image_url"=>"Url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"33333", "description"=>"testing", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "status"=>"under_investigation", "image_url"=>"Url", "user_id"=>"7"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 109)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:50:49 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "image_url"=>"url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "status"=>"under_investigation", "image_url"=>"url", "user_id"=>"7"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:53:01 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "image_url"=>"url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "status"=>"under_investigation", "image_url"=>"url", "user_id"=>"7"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started POST "/red_flag_records" for ::1 at 2023-04-27 16:54:56 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"type"=>"", "title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "image_url"=>"url", "status"=>"under_investigation", "user_id"=>"7", "red_flag_record"=>{"title"=>"wwwww", "description"=>"wwww", "latitude"=>"39.3260685", "longitude"=>" -4.8379791", "status"=>"under_investigation", "image_url"=>"url", "user_id"=>"7"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mRedFlagRecord Create (0.4ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "wwwww"], ["description", "wwww"], ["latitude", 39.326069], ["longitude", -4.837979], ["status", 0], ["image_url", "url"], ["user_id", 7], ["created_at", "2023-04-27 13:54:56.831890"], ["updated_at", "2023-04-27 13:54:56.831890"]]
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:25:in `create'
+Completed 201 Created in 65ms (Views: 0.3ms | ActiveRecord: 12.9ms | Allocations: 13640)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:54:59 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 2349)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:55:24 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:56:03 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:56:06 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:57:49 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 24ms (Views: 17.0ms | ActiveRecord: 1.8ms | Allocations: 7928)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:03 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:16 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:16 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:28 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.4ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:34 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:37 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.3ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 16:58:46 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.5ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.5ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:00:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.6ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.6ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:00:31 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.4ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:00:49 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:00:54 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 2275)
+
+
+Started PUT "/red_flag_records/9" for ::1 at 2023-04-27 17:01:15 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"wwwww", "description"=>"edit ", "id"=>"9", "red_flag_record"=>{"title"=>"wwwww", "description"=>"edit "}}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:70:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mRedFlagRecord Update (0.3ms)[0m  [1m[33mUPDATE "red_flag_records" SET "description" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["description", "edit "], ["updated_at", "2023-04-27 14:01:15.433166"], ["id", 9]]
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+Completed 200 OK in 91ms (Views: 0.2ms | ActiveRecord: 18.5ms | Allocations: 12066)
+
+
+Started PUT "/red_flag_records/8" for ::1 at 2023-04-27 17:02:04 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"Test", "description"=>"TEsting", "id"=>"8", "red_flag_record"=>{"title"=>"Test", "description"=>"TEsting"}}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:70:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 2547)
+
+
+Started PUT "/red_flag_records/7" for ::1 at 2023-04-27 17:02:21 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>nil, "description"=>nil, "id"=>"7", "red_flag_record"=>{"title"=>nil, "description"=>nil}}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:70:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mRedFlagRecord Update (0.3ms)[0m  [1m[33mUPDATE "red_flag_records" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "red_flag_records"."id" = ?[0m  [["title", nil], ["description", nil], ["updated_at", "2023-04-27 14:02:22.019662"], ["id", 7]]
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+  [1m[36mTRANSACTION (38.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:81:in `update'
+Completed 200 OK in 56ms (Views: 0.7ms | ActiveRecord: 39.6ms | Allocations: 3156)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:07:25 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.2ms | Allocations: 2263)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:07:27 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 2263)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:07:29 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 2263)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 17:07:35 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.1ms | Allocations: 2263)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 17:07:35 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 2263)
+
+
+Started GET "/intervention_records" for ::1 at 2023-04-27 17:08:33 +0300
+Started GET "/red_flag_records" for ::1 at 2023-04-27 17:08:33 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 2277)
+
+
+Processing by InterventionRecordsController#index as */*
+  [1m[36mInterventionRecord Load (0.3ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:13:in `index'
+Completed 200 OK in 35ms (Views: 16.1ms | ActiveRecord: 3.5ms | Allocations: 6856)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-04-27 17:08:44 +0300
+Started GET "/intervention_records" for ::1 at 2023-04-27 17:08:44 +0300
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Processing by InterventionRecordsController#index as */*
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.1ms | Allocations: 2524)
+
+
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:13:in `index'
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.6ms | Allocations: 1972)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:09:17 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.4ms | Allocations: 2309)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-04-27 17:09:40 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.4ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:14:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 2263)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mInterventionRecord Load (0.4ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."user_id" = ?[0m  [["user_id", 1]]
