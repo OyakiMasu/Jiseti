@@ -23,10 +23,12 @@ module Api
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3001'
+        origins 'http://localhost:3000', 'http://localhost:3001', 'https://zaki-dev-jiseti.onrender.com', 'https://jiseti-4p78gqvrd-oyakimasu.vercel.app'
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
+    
+    
     
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
