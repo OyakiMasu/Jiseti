@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :create, :update, :destroy]
 
 
+  #All records
+  get "/all", to: "red_flag_records#all_records"
+
   # Sign-up
   post "/signup", to: "users#create"
 

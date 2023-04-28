@@ -5,6 +5,7 @@ class RedFlagRecordsController < ApplicationController
 
     before_action :verify_auth, only: [:create]
 
+
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
@@ -14,15 +15,25 @@ class RedFlagRecordsController < ApplicationController
         render json: red_flag_records, status: :ok
     end
 
-    # SHOW /foods/:id
+    # GET /red_flag_records/:id
     def show
         red_flag_records = RedFlagRecord.find(params[:id])
         render json: red_flag_records, status: :ok
      end
+    
+    # GET /red_flag_records/ intervention_records
+    def all_records
+        red_flag_records = current_user.red_flag_records
+        intervention_records = current_user.intervention_records
+        
+        render json: {interventions: intervention_records, red_flag: red_flag_records}
+    end
+
+
 
     # POST /red_flag_records
   def create
-    red_flag_record = RedFlagRecord.create(red_flag_record_params)
+    red_flag_record = RedFlagRecord.new(red_flag_record_params)
     if @current_user
       red_flag_record.user = @current_user
     end
