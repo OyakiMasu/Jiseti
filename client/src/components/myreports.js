@@ -8,14 +8,13 @@ const MyReports = () => {
   const [reports, setReports] = useState([]);
   const storedId = localStorage.getItem("userId");
   const { isLoggedIn } = useContext(AuthContext);
+  const [redFlagReports, setRedFlagReports] = useState([]);
+  const [interventionReports, setInterventionReports] = useState([]);
 
   // console.log(token)
 
   useEffect(() => {
-    // const storedReports = JSON.parse(localStorage.getItem(`user-${storedId}-reports`) || '[]');
-    // if (storedReports.length) {
-    //   setReports(storedReports);
-    // } else {
+    
       fetch(`http://localhost:3000/red_flag_records?user_id={storeId}`)
         .then(response => {
           if (!response.ok) {
@@ -24,20 +23,45 @@ const MyReports = () => {
           return response.json();
         })
         .then(data => {
-          setReports(data);
-          // localStozrage.setItem(`user-${storedId}-reports`, JSON.stringify(data));
+          setRedFlagReports(data);
         })
         .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
         });
     // }
-  }, []);
+  }, [storedId, token]);
   // console.log(storedId);
+
+  useEffect(() => {
+    
+    fetch(`http://localhost:3000/intervention_records?user_id={storeId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setInterventionReports(data);
+        // console.log(data)
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  // }
+}, [storedId, token]);
+// console.log(storedId);
 
   const handleEdit = (reportId) => {
     console.log(`Editing report with id ${reportId} for user ${storedId}`);
-    const report = reports.find(r => r.id === reportId);
+
+    const redFlagReport = redFlagReports.find((r) => r.id === reportId);
+    const interventionReport = interventionReports.find(
+      (r) => r.id === reportId
+    );
+    const report = redFlagReport || interventionReport;
     console.log(report.id)
+
     if (!storedId) {
       console.error('You must be logged in to perform this action');
       return;
@@ -55,13 +79,18 @@ const MyReports = () => {
       title: titleInput,
       description: descriptionInput
     }
-    // update the report object with the new data
-    // report.title = titleInput;
-    // report.description = descriptionInput;
+
     // send a PUT request to update the report data
     console.log(token)
     
-    fetch(`http://localhost:3000/red_flag_records/${report.id}`, {
+    if (storedId === report.id){ 
+      
+      fetch(
+
+      `http://localhost:3000/${
+        redFlagReport ? "red_flag_records" : "intervention_records"
+      }/${report.id}`,
+      {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -79,9 +108,14 @@ const MyReports = () => {
         // localStorage.setItem(`user-${storedId}-reports`, JSON.stringify(updatedReports));
       })
       .catch(error => console.error('Error updating report:', error));
-  };
+  }  else {
+    alert("You are not authorized")
+  }
+  
+    }
 
 
+   
   // ...
   useEffect(() => {
     // ...
@@ -92,11 +126,19 @@ const MyReports = () => {
     console.log(`Deleting report with id ${report.id}`);
   };
 
+  let filteredRedFlags = redFlagReports.filter(report => {return report.user_id == storedId} )
+  let filteredIntervention = interventionReports.filter(report => {return report.user_id == storedId} )
 
+
+  console.log(filteredRedFlags)
+  // console.log(storedId)
 
   return (
     <center>
       <h2>My Reports</h2>
+
+      <h3>RED FLAG RECORDS</h3>
+
       <table>
         <thead>
           <tr>
@@ -109,7 +151,38 @@ const MyReports = () => {
           </tr>
         </thead>
         <tbody>
-          {reports.map(report => (
+          {filteredRedFlags.map(report => (
+            <tr key={report.id}>
+              <td>{report.title}</td>
+              <td><img src={report.image_url} alt="report image" /></td>
+              <td>{report.description}</td>
+              <td>{report.latitude}, {report.longitude}</td>
+              <td>{report.status}</td>
+              <td>
+              <button onClick={() => handleEdit(report.id, storedId)}>Edit</button>
+              <button onClick={() => handleDelete(report)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h3>INTERVENTION RECORDS</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {filteredIntervention.map(report => (
             <tr key={report.id}>
               <td>{report.title}</td>
               <td><img src={report.image_url} alt="report image" /></td>
@@ -125,6 +198,7 @@ const MyReports = () => {
         </tbody>
       </table>
       <Link to="/reportpage">Add Report</Link>
+      
     </center>
   );
 };

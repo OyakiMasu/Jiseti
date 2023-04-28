@@ -8,12 +8,12 @@ const Report = () => {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [status, setStatus] = useState("");
-  const [type, setType] = useState("")
+  const [type, setType] = useState("Red Flag")
   const { userId } = useContext(AuthContext);
   const storedId = localStorage.getItem("userId")
   const token = localStorage.getItem('token')
 
-  // console.log(token)
+  // console.log(token)?
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,13 +31,23 @@ const Report = () => {
     // console.log("userId: ", userId);
     console.log(reportObj);
 
-    fetch("http://localhost:3000/red_flag_records", {
+    let endpoint;
+    if (type === "Red Flag") {
+      endpoint = "http://localhost:3000/red_flag_records";
+    } else if (type === "intervention") {
+      endpoint = "http://localhost:3000/intervention_records";
+    } else {
+      // handle invalid report type
+      return;
+    }
+
+    fetch(endpoint, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token
       },
-      
+  
       body: JSON.stringify(reportObj)
     })
 
@@ -81,7 +91,7 @@ const Report = () => {
           <label className="labelCo">
               Type:
               <select value={type} onChange={(e) => setType(e.target.value)} required>
-                <option value="red_flag">Red Flag</option>
+                <option value="Red Flag">Red Flag</option>
                 <option value="intervention">Intervention</option>
               </select>
             </label>
