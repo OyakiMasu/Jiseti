@@ -83,49 +83,91 @@ const MyReports = () => {
     // send a PUT request to update the report data
     console.log(token)
     
-    if (storedId === report.id){ 
-      
-      fetch(
-
+    
+    fetch(
       `http://localhost:3000/${
         redFlagReport ? "red_flag_records" : "intervention_records"
       }/${report.id}`,
       {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-         Authorization: 'Bearer' + token },
-
-      body: JSON.stringify(reportObj),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Report updated:', data);
-        // update the state with the updated report data
-        // const updatedReports = reports.map(r => r.id === data.id ? data : r);
-        // setReports(updatedReports);
-        // // update local storage with the updated reports
-        // localStorage.setItem(`user-${storedId}-reports`, JSON.stringify(updatedReports));
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(reportObj),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Report updated:", data);
       })
-      .catch(error => console.error('Error updating report:', error));
-  }  else {
-    alert("You are not authorized")
-  }
-  
-    }
-
-
-   
-  // ...
-  useEffect(() => {
-    // ...
-    console.log("storedId:", storedId);
-  }, [storedId]);
-  const handleDelete = (report) => {
-    // implement delete functionality here
-    console.log(`Deleting report with id ${report.id}`);
+      .catch((error) => console.error("Error updating report:", error));
   };
 
+  
+  const handleDelete = (report ) => {
+    console.log(`Deleting report with id ${report.id} for user ${storedId}`);
+  
+    if (!storedId) {
+      console.error('You must be logged in to perform this action');
+      alert('You must be logged in to perform this action');
+      return;
+    }
+    
+    if (storedId !== report.user_id) {
+      console.error('You do not have permission to delete this report');
+      alert('You do not have permission to delete this report');
+      return;
+    }
+  
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this report?"
+    );
+    
+    if (confirmDelete) {
+      fetch(
+        `http://localhost:3000/${
+          report.red_flag_report ? "red_flag_records" : "intervention_records"
+        }/${report.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
+        .then((response) => {
+          if (response.ok) {
+            if (report.red_flag_report) {
+              const updatedReports = redFlagReports.filter(
+                (r) => r.id !== report.id
+              );
+              setRedFlagReports(updatedReports);
+            } else {
+              const updatedReports = interventionReports.filter(
+                (r) => r.id !== report.id
+              );
+              setInterventionReports(updatedReports);
+            }
+          } else {
+            throw new Error(response.status);
+          }
+        })
+        .catch((error) => {
+          if (error.message === "403") {
+            if (report.red_flag_report) {
+              alert("Only admin users can delete red flag records");
+            } else {
+              alert("Only admin users can delete intervention records");
+            }
+          } else {
+            console.error("Error deleting report:", error);
+          }
+        });
+    }
+  };
+  
+  
   let filteredRedFlags = redFlagReports.filter(report => {return report.user_id == storedId} )
   let filteredIntervention = interventionReports.filter(report => {return report.user_id == storedId} )
 
@@ -160,7 +202,7 @@ const MyReports = () => {
               <td>{report.status}</td>
               <td>
               <button onClick={() => handleEdit(report.id, storedId)}>Edit</button>
-              <button onClick={() => handleDelete(report)}>Delete</button>
+              <button onClick={() => handleDelete(report, storedId)}>Delete</button>
               </td>
             </tr>
           ))}
@@ -191,7 +233,7 @@ const MyReports = () => {
               <td>{report.status}</td>
               <td>
               <button onClick={() => handleEdit(report.id, storedId)}>Edit</button>
-              <button onClick={() => handleDelete(report)}>Delete</button>
+              <button onClick={() => handleDelete(report, storedId)}>Delete</button>
               </td>
             </tr>
           ))}
