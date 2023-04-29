@@ -124,3 +124,11 @@ background-attachment: fixed;
 overflow-x: hidden;
 overflow-y: auto;
 }
+/* .welcome{
+  position: absolute;
+  width: 470px;
+  height: 450px;
+  background: url(../assets/anti.jpg);
+  margin-left: 70%;
+  margin-top: 15%;
+} */

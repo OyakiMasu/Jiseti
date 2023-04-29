@@ -7,7 +7,7 @@ function Homepage() {
 
     return(
         <div className="homenav">
-
+          
             <nav>
                 <div className="logo">
                     <span>Jiseti.</span>
@@ -21,7 +21,7 @@ function Homepage() {
                 </div>
             </nav>
                 
-           
+            <div className="welcome"></div>
          
               <h1 className="bottom">Corruption hurts us all.Lets stop it together</h1>   
 

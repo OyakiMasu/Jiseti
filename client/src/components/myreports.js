@@ -80,37 +80,41 @@ const MyReports = () => {
     console.log(`Deleting report with id ${report.id}`);
   };
   return (
-    <center>
-      <h2>My Reports</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Image</th>
-            <th>Location</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reports.map(report => (
-            <tr key={report.id}>
-              <td>{report.title}</td>
-              <td><img src={report.image_url} alt="report image" /></td>
-              <td>{report.description}</td>
-              <td>{report.latitude}, {report.longitude}</td>
-              <td>{report.status}</td>
-              <td>
-              <button onClick={() => handleEdit(report.id, storedId)}>Edit</button>
-              <button onClick={() => handleDelete(report)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <Link to="/reportpage">Add Report</Link>
-    </center>
+    <div className="myreportsbg">
+       
+        <center>
+          <h2>My Reports</h2>
+          <Link to="/reportpage">Add Report</Link>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reports.map(report => (
+                <tr key={report.id}>
+                  <td>{report.title}</td>
+                  <td><img src={report.image_url} alt="report image" /></td>
+                  <td>{report.description}</td>
+                  <td>{report.latitude}, {report.longitude}</td>
+                  <td>{report.status}</td>
+                  <td>
+                  <button onClick={() => handleEdit(report.id, storedId)}>Edit</button>
+                  <button onClick={() => handleDelete(report)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </center>
+    </div>
+
   );
 };
 export default MyReports;
