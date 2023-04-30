@@ -15,7 +15,7 @@ function Registerpage() {
         console.log("username: ", username);
         console.log("email: ", email);
         console.log("password: ", password);
-        fetch("https://zaki-dev-jiseti.onrender.com/signup", {
+        fetch("http://127.0.0.1:3000/signup", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

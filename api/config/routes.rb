@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :create, :update, :destroy]
 
 
+  #All records
+  get "/all", to: "red_flag_records#all_records"
+
   # Sign-up
   post "/signup", to: "users#create"
 
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
 
   # Login/Logout Sessions
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  post "/logout", to: "sessions#destroy"
 
 
 end

@@ -1,15 +1,36 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the RedFlagRecordsHelper. For example:
-#
-# describe RedFlagRecordsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe RedFlagRecordsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#display_status' do
+    it 'returns "Under investigation" for status 0' do
+      red_flag = RedFlagRecord.new(status: "under_investigation")
+      expect(display_status(red_flag)).to eq('Under investigation')
+    end
+
+    it 'returns "Rejected" for status 1' do
+      red_flag = RedFlagRecord.new(status: "rejected")
+      expect(display_status(red_flag)).to eq('Rejected')
+    end
+
+    it 'returns "Resolved" for status 2' do
+      red_flag = RedFlagRecord.new(status: "resolved")
+      expect(display_status(red_flag)).to eq('Resolved')
+    end
+
+  end
+
+  module RedFlagRecordsHelper
+    def display_status(red_flag)
+      case red_flag.status
+      when "under_investigation"
+        'Under investigation'
+      when "rejected"
+        'Rejected'
+      when "resolved"
+        'Resolved'
+      else
+        'Unknown'
+      end
+    end
+  end
 end
