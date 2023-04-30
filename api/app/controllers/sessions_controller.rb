@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     # Authorization
     before_action :authorize_unauthenticated, only: :create
-    before_action :verify_auth, only:  [:destroy]
+    # before_action :verify_auth, only:  [:destroy]
 
     #Login
     def create

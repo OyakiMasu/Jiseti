@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+
 RSpec.describe InterventionRecord, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it 'requires a title' do
+      intervention = InterventionRecord.new(description: 'This is a description')
+      expect(intervention).to_not be_valid
+    end
+  end
 end

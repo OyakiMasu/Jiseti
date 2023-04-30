@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "InterventionRecords", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
+RSpec.describe 'InterventionRecords API', type: :request do
+  # describe 'GET /intervention_records' do
+  #   it 'returns a 200 status code' do
+  #     get '/intervention_records'
+  #     expect(response).to have_http_status(200)
+  #   end
+  # end
 end

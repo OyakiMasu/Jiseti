@@ -1,9 +1,6 @@
 class RedFlagRecordsController < ApplicationController
     #Authorization
-    # before_action :authorize, only: [:create, :update, :destroy]
-    # before_action :authorize_unauthenticated, only: [:index, :show]
-
-    before_action :verify_auth, only: [:create]
+    before_action :verify_auth, only: [:create, :update, :destroy]
 
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
@@ -47,43 +44,9 @@ class RedFlagRecordsController < ApplicationController
 
 
   # PATCH/ red_flag_records
-  # PATCH/ red_flag_records
-  # def update
-  #   red_flag_record = RedFlagRecord.find(params[:id])
-  #    userLoggedIn = @current_user.nil
-  #   # Check if current user is present
-  #   if userLoggedIn
-  #     render json: { error: "You must be logged in to perform this action" }, status: :unprocessable_entity
-  #     return
-  #   end
-  
-  #   # Check if the user making the update is the owner of the record being updated
-  #   if !current_user.admin? && red_flag_record.user != current_user
-  #     render json: { error: "You are not authorized to perform this action" }, status: :unprocessable_entity
-  #     return
-  #   end
-  
-  #   # Update the red flag record
-  #   permitted_params = red_flag_record_params
-  #   if !current_user.admin? && !permitted_params[:status].nil?
-  #     render json: { error: "You are not authorized to update the status" }, status: :unprocessable_entity
-  #     return
-  #   end
-  
-  #   if red_flag_record.update(permitted_params)
-  #     render json: red_flag_record
-  #   else
-  #     render json: { errors: red_flag_record.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
-
   def update
     redflag = RedFlagRecord.find_by(id: params[:id])
 
-    # if !current_user
-    #   render json: {message: "You must be logged in to peform this action"}
-    #   return
-    # end
     if !redflag
       render json: {message: "Record not found"}, status: :not_found
       return
@@ -125,12 +88,5 @@ class RedFlagRecordsController < ApplicationController
     def render_unprocessable_entity
         render json: { error: "Validity errors" }, status: :unprocessable_entity
     end
-    
-  #   def authorize_unauthenticated
-  #     unless current_user
-  #       render json: { error: "You are not logged in" }, status: :unauthorized
-  #   end
-  # end
-
 
 end

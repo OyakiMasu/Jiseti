@@ -1,8 +1,6 @@
 class InterventionRecordsController < ApplicationController
         #Authorization
-        # before_action :authorize, only: [:create, :update, :destroy]
-        # before_action :authorize_unauthenticated, only: [:index, :show]
-        before_action :verify_auth, only: [:create]
+        before_action :verify_auth, only: [:create, :update, :destroy]
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -22,16 +20,6 @@ class InterventionRecordsController < ApplicationController
     end
 
     # # POST /intervention_records
-    # def create
-    #     intervention_record = InterventionRecord.new(intervention_record_params)
-    #         intervention_record.user = current_user
-    #     if intervention_record.save
-    #         render json: intervention_record, status: :created
-    #     else
-    #         render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    # end
-
     def create
       intervention_record = InterventionRecord.create(intervention_record_params)
       if @current_user
@@ -46,35 +34,9 @@ class InterventionRecordsController < ApplicationController
     end
       
     # PATCH /intervention_records/:id/ User
-    # def update
-    #   intervention_record = InterventionRecord.find(params[:id])
-    #   if current_user.admin? # check if current user is an admin
-    #     if intervention_record.update(intervention_record_params)
-    #       render json: intervention_record
-    #     else
-    #       render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    #   else # if the user is not an admin, disallow update to the status attribute
-    #     if intervention_record_params.key?(:status)
-    #       render json: { error: "Only admin users can update status" }, status: :unprocessable_entity
-    #     else
-    #       if intervention_record.update(intervention_record_params)
-    #         render json: intervention_record
-    #       else
-    #         render json: { errors: intervention_record.errors.full_messages }, status: :unprocessable_entity
-    #       end
-    #     end
-    #   end
-    # end
-
-
   def update
   intervention = InterventionRecord.find_by(id: params[:id])
 
-    # if !current_user
-    #   render json: {message: "You must be logged in to peform this action"}
-    #   return
-    # end
     if !intervention
       render json: {message: "Record not found"}, status: :not_found
       return
@@ -93,7 +55,7 @@ class InterventionRecordsController < ApplicationController
       def destroy
         intervention_record = InterventionRecord.find(params[:id])
         
-        if current_user.admin?
+        if current_user
           intervention_record.destroy 
           head :no_content
         else
@@ -117,10 +79,4 @@ class InterventionRecordsController < ApplicationController
     end
 
    
-  #   def authorize_unauthenticated
-  #     unless current_user
-  #       render json: { error: "You are not logged in" }, status: :unauthorized
-  #   end
-  # end
-
 end
