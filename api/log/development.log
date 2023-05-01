@@ -25273,3 +25273,163 @@ FOREIGN KEY ("user_id")
   [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mInterventionRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Public Hazard"], ["description", " Endangerment of  public safety and life"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1"], ["user_id", 2], ["created_at", "2023-05-01 20:38:01.166341"], ["updated_at", "2023-05-01 20:38:01.166341"]]
   [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2023-05-02 00:32:04 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"zaki", "email"=>"zaki@mail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fa674baa730>, params: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"zaki", "email"=>"zaki@mail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "zaki"], ["password_digest", "[FILTERED]"], ["email", "zaki@mail.com"], ["user_type", 0], ["created_at", "2023-05-01 21:32:04.809507"], ["updated_at", "2023-05-01 21:32:04.809507"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 236ms (Views: 0.4ms | ActiveRecord: 13.2ms | Allocations: 19126)
+
+
+Started POST "/login" for ::1 at 2023-05-02 00:32:16 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]", "session"=>{"username"=>"zaki", "email"=>"zaki@mail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "zaki"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 246ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 2776)
+
+
+Started GET "/intervention_records" for ::1 at 2023-05-02 00:32:16 +0300
+Started GET "/red_flag_records" for ::1 at 2023-05-02 00:32:16 +0300
+Processing by InterventionRecordsController#index as */*
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mInterventionRecord Load (0.3ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 85ms (Views: 52.3ms | ActiveRecord: 1.0ms | Allocations: 41634)
+
+
+Completed 200 OK in 83ms (Views: 53.0ms | ActiveRecord: 1.3ms | Allocations: 41974)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:21 +0300
+Started GET "/intervention_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:21 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.2ms | Allocations: 1564)
+
+
+Processing by InterventionRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mInterventionRecord Load (0.3ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.3ms | Allocations: 1596)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:26 +0300
+Started GET "/intervention_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:26 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.5ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Processing by InterventionRecordsController#index as */*
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.5ms | Allocations: 1913)
+
+
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mInterventionRecord Load (0.3ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 1538)
+
+
+Started GET "/intervention_records" for ::1 at 2023-05-02 00:32:42 +0300
+Started GET "/red_flag_records" for ::1 at 2023-05-02 00:32:42 +0300
+Processing by InterventionRecordsController#index as */*
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+Processing by RedFlagRecordsController#index as */*
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+  [1m[36mRedFlagRecord Load (2.5ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 2.5ms | Allocations: 2573)
+
+
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.1ms | Allocations: 2001)
+
+
+Started GET "/intervention_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:46 +0300
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-05-02 00:32:46 +0300
+Processing by InterventionRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 1539)
+
+
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 1547)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-05-02 00:33:39 +0300
+Started GET "/intervention_records?user_id={storeId}" for ::1 at 2023-05-02 00:33:39 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+Processing by InterventionRecordsController#index as */*
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 1819)
+
+
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 1538)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-05-02 00:34:41 +0300
+Started GET "/intervention_records" for ::1 at 2023-05-02 00:34:41 +0300
+Processing by RedFlagRecordsController#index as */*
+Processing by InterventionRecordsController#index as */*
+  [1m[36mInterventionRecord Load (2.5ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 2.5ms | Allocations: 2059)
+
+
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.2ms | Allocations: 3505)
+
+
+Started GET "/red_flag_records?user_id={storeId}" for ::1 at 2023-05-02 00:34:46 +0300
+Started GET "/intervention_records?user_id={storeId}" for ::1 at 2023-05-02 00:34:46 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.1ms | Allocations: 1557)
+
+
+Processing by InterventionRecordsController#index as */*
+  Parameters: {"user_id"=>"{storeId}"}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1538)
+
+
+Started GET "/red_flag_records" for ::1 at 2023-05-02 00:34:48 +0300
+Started GET "/intervention_records" for ::1 at 2023-05-02 00:34:48 +0300
+Processing by InterventionRecordsController#index as */*
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 1538)
+
+
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 1547)
+
+
