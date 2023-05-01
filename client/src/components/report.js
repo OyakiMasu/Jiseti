@@ -23,6 +23,7 @@ function Report() {
 
       <center><h2>REPORTS</h2></center>
       <center><a href='/myreports'> Report</a></center>
+
           <div className='box'>
 
                 {intervention.map((records, index) => (

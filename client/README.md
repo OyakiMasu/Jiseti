@@ -1,70 +1,81 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# JISETI
 
-## Available Scripts
 
-In the project directory, you can run:
+# Description
+Jiseti is an report management system that allows users to bring any form of corruption to authorities and general public.
 
-### `npm start`
+# Tools
+The following were the tools used to build this application:
+* React
+* Rails
+* Ruby
+* MySql
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Getting Started
+In order for you to use the content on this repo ensure you have the following:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- A computer that runs on either of the following; (Windows 7+, Linux, Mac OS)
+- Ruby 2.7.2+
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To use this repo on your machine requires some simple steps
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Alternative One
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Open a terminal / command line interface on your computer
+- Clone the repo by using the following:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        https://github.com/OyakiMasu/Jiseti
+- Be patient as it creates a copy on your local machine for you.
+- Change directory to the repo folder:
 
-### `npm run eject`
+        cd Jiseti
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- (Optional) Open it in ``Visual Studio Code``
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        code .
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- (Alternate Option) Open it in any editor of your choice.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Alternative Two
 
-## Learn More
+- On the top right corner of this page there is a button labelled ``Fork``.
+- Click on that button to fork the repo to your own account.
+- Take on the process in ``Alternative One`` above.
+- Remember to replace your username when cloning.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        git clone https://github.com/your-username-here/Clarks.git
+        
+### Alternative Three
+- click the link to visit site
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+      deployed link goes here
 
-### Code Splitting
+# Running the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Running the application is very straight forward. You can use the following steps to run the app.
 
-### Analyzing the Bundle Size
+- Install required dependencies from rubygems
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+      bundle install
+- Run the server
 
-### Making a Progressive Web App
+      rails s
+- Check the API endpoints available
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+      rails s
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Authors
+This project was contributed to by:
+- [Zaki Mathu](https://github.com/OyakiMasu/)
+- [Dancun Odhiambo](https://github.com/dancun616/)
+- [Tevin Gichoya](https://github.com/itstevin/)
+- [Fred Murigi](https://github.com//)
+- [Eugene Aija](https://github.com//)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License
+The project is licensed under MIT
