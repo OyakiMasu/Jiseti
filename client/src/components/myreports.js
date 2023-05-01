@@ -85,6 +85,10 @@ const MyReports = () => {
         <center>
           <h2>My Reports</h2>
           <Link to="/reportpage">Add Report</Link>
+          <br/>
+          <div className="logoutbtn">
+          <Link to="/login">Logout</Link>
+          </div>
           <table>
             <thead>
               <tr>
@@ -100,7 +104,7 @@ const MyReports = () => {
               {reports.map(report => (
                 <tr key={report.id}>
                   <td>{report.title}</td>
-                  <td><img src={report.image_url} alt="report image" /></td>
+                  <td><img className="tableimg" src={report.image_url} alt="report image" /></td>
                   <td>{report.description}</td>
                   <td>{report.latitude}, {report.longitude}</td>
                   <td>{report.status}</td>
