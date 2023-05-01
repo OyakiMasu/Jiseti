@@ -8,11 +8,16 @@ const Report = () => {
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [status, setStatus] = useState("");
-  const [type, setType] = useState("")
+  const [type, setType] = useState("Red Flag")
   const { userId } = useContext(AuthContext);
   const storedId = localStorage.getItem("userId")
+  const token = localStorage.getItem('token')
+
+  // console.log(token)?
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const reportObj = {
       type,
       title,
@@ -25,13 +30,27 @@ const Report = () => {
     };
     // console.log("userId: ", userId);
     console.log(reportObj);
-    fetch("https://zaki-dev-jiseti.onrender.com/red_flag_records", {
+
+    let endpoint;
+    if (type === "Red Flag") {
+      endpoint = "http://localhost:3000/red_flag_records";
+    } else if (type === "intervention") {
+      endpoint = "http://localhost:3000/intervention_records";
+    } else {
+      // handle invalid report type
+      return;
+    }
+
+    fetch(endpoint, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
       },
+  
       body: JSON.stringify(reportObj)
     })
+
     .then(response => {
       console.log("response:", response);
       if (!response.ok) {
@@ -67,6 +86,7 @@ const Report = () => {
         <a className='reportlink' href='/report'>Reports</a>
         <div className="logoutbtn"><a href='/myreports'>My Reports</a>
         </div>
+
       </center>
 
       <div className="reportcard"> 
@@ -74,7 +94,7 @@ const Report = () => {
           <label className="labelCo">
               Type:
               <select value={type} onChange={(e) => setType(e.target.value)} required>
-                <option value="red_flag">Red Flag</option>
+                <option value="Red Flag">Red Flag</option>
                 <option value="intervention">Intervention</option>
               </select>
             </label>
@@ -113,9 +133,12 @@ const Report = () => {
               <input className="Radio" type="radio" name="status" value="rejected" onChange={(e) => setStatus(e.target.value)} /> Rejected
               <input className="Radio" type="radio" name="status" value="resolved" onChange={(e) => setStatus(e.target.value)} /> Resolved
             </label> 
+
+
+
+            <button type="submit">Submit</button>
           </form>
 
-          <button type="submit">Submit</button>
       </div>
     </div>
   );

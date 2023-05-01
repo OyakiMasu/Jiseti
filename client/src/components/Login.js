@@ -10,10 +10,14 @@ function Login() {
     const [username, SetUsername] = useState("")
     const [email, SetEmail] = useState("")
     const [password, SetPassword] = useState("")
+
+
     function handleSubmit(e) {
       e.preventDefault();
+  
       console.log("login form submitted with", { username, email, password });
-      fetch("https://zaki-dev-jiseti.onrender.com/login", {
+
+      fetch("http://127.0.0.1:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -24,12 +28,22 @@ function Login() {
           password: password
         })
       })
-        .then(response => response.json())
+        .then(response => {
+          if(response.ok){
+            navigate("/report");
+            return response.json()
+          } else {
+            alert("Login failed")
+            return response.json()
+          }
+        }
+        )
+
         .then(data => {
           console.log("login response", data);
           localStorage.setItem("userId",data.userId);
+          localStorage.setItem("token",data.token);
           console.log("userId in Login component: ", data.userId);
-          navigate("/report");
         })
         .catch(error => console.error(error));
     }
