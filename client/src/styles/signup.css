@@ -1,0 +1,43 @@
+
+.passwordinput{
+  position: absolute;
+  width: 500px;
+  height: 1.5em;
+  left: 35%;
+  top: 380px;
+  font-size: 22px;
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+.adduser{
+  position: absolute;
+width: fit-content;
+height: 50px;
+left: 40%;
+top: 50%;
+background: #8379FC;
+font-family: 'Inter';
+font-style: normal;
+font-size: 22px;
+border-radius: 10px;
+color: white;
+}
+.signimg{
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  background: url(../assets/face.jpg);
+  z-index:-1;
+  margin:0%;
+  background-size: cover;
+  background-position:center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+}

@@ -1,0 +1,52 @@
+img.imgtag{
+  position: relative;
+  width: 550px; 
+  left: 28em;
+  border-radius: 8px;
+}
+.reportcard{
+
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+.box{
+ width: 300px;
+ height:fit-content;
+ 
+}
+p.cardDescription{
+  position: relative;
+  font-size: 24px;
+  width: 380px;
+  color:#7EC8E3;
+}
+.reportheader{
+  text-align: center;
+}
+h2.cardtitle,p.cardDescription,p.cardGeolocation,p.cardGeolocation-1,p.cardStatus{
+  position: relative;
+  left: 120%;
+}
+div.grand{
+ width: 100%;
+height: 100vh;
+box-sizing: border-box;
+position: fixed;
+bottom: 0;
+right: 0;
+left: 0;
+top: 0;
+background: url(../assets/Blu.jpg);
+z-index:-1;
+margin:0%;
+background-size: cover;
+background-position:center;
+background-attachment: fixed;
+overflow-x: hidden;
+overflow-y: auto;
+color: antiquewhite;
+}
