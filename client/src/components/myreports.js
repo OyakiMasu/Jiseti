@@ -185,8 +185,7 @@ const MyReports = () => {
           <div className="logoutbtn">
           <Link to="/login">Logout</Link>
           </div>
-    <center>
-      <h3>RED FLAG RECORDS</h3>
+        <h3>RED FLAG RECORDS</h3>
 
       <table>
         <thead>
