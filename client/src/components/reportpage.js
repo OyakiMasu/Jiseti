@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../AuthContext";
-import '../styles/Report.css'
+import '../styles/Reportpage.css'
 
 const Report = () => {
   const [description, setDescription] = useState("");
@@ -80,10 +80,13 @@ const Report = () => {
         .catch(error => console.log(error));
     };
   return (
-    <div>
+    <div className="reportbackground">
       <center>
-      <h2>Add a Report</h2>
-      <a className='reportlink' href='/myreports'>My Reports</a>
+        <h2>Add a Report</h2>
+        <a className='reportlink' href='/report'>Reports</a>
+        <div className="logoutbtn"><a href='/myreports'>My Reports</a>
+        </div>
+
       </center>
 
       <div className="reportcard"> 

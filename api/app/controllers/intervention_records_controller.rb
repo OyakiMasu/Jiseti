@@ -1,6 +1,6 @@
 class InterventionRecordsController < ApplicationController
         #Authorization
-        before_action :verify_auth, only: [:create, :update, :destroy]
+        # before_action :verify_auth, only: [:create, :update, :destroy]
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity

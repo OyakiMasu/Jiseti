@@ -176,10 +176,16 @@ const MyReports = () => {
   // console.log(storedId)
 
   return (
-    <center>
-      <h2>My Reports</h2>
-
-      <h3>RED FLAG RECORDS</h3>
+     <div className="myreportsbg">
+       
+        <center>
+          <h2>My Reports</h2>
+          <Link to="/reportpage">Add Report</Link>
+          <br/>
+          <div className="logoutbtn">
+          <Link to="/login">Logout</Link>
+          </div>
+        <h3>RED FLAG RECORDS</h3>
 
       <table>
         <thead>
@@ -242,6 +248,7 @@ const MyReports = () => {
       <Link to="/reportpage">Add Report</Link>
       
     </center>
+</div>
   );
 };
 export default MyReports;

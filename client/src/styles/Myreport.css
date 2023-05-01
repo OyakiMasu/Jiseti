@@ -2,11 +2,14 @@ table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
+  height: 100vh;
+  margin-top: 3%;
 }
 th, td {
   padding: 8px;
   border: 1px solid #ddd;
   font-weight: normal;
+  width: 50px;
 }
 th {
   text-align: left;
@@ -15,4 +18,11 @@ th {
 tbody{
   width: 100%;
   height: 100vh;
+}
+.tableimg{
+  width: 500px;
+  border-radius: 10px;
+}
+.logoutbtn{
+  margin-top: 5%;
 }

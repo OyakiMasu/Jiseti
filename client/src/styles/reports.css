@@ -1,7 +1,7 @@
 img.imgtag{
   position: relative;
   width: 550px; 
-  left: 89%;
+  left: 28em;
   border-radius: 8px;
 }
 .reportcard{
@@ -29,7 +29,7 @@ p.cardDescription{
 }
 h2.cardtitle,p.cardDescription,p.cardGeolocation,p.cardGeolocation-1,p.cardStatus{
   position: relative;
-  left: 70%;
+  left: 120%;
 }
 div.grand{
  width: 100%;
