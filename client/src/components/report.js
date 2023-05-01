@@ -25,7 +25,6 @@ function Report() {
 
       <center><h2>REPORTS</h2></center>
       <center><a href='/myreports'> Report</a></center>
-      <center><a href='/reportpage'> Report</a></center>
           <div className='box'>
 
                 {intervention.map((records, index) => (
