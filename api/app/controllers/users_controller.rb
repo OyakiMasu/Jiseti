@@ -21,7 +21,7 @@ def create
     user = User.create(user_params)
     if user.valid?
         session[:user_id] = user.id
-        render json: { userId: user.id }, status: :created
+        render json: { userId: user.id , user: user}, status: :created
     else
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end

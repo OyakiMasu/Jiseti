@@ -24705,3 +24705,571 @@ Processing by InterventionRecordsController#index as */*
 Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 1903)
 
 
+Started GET "/" for 127.0.0.1 at 2023-05-01 22:48:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as */*
+  Rendering /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.7.4/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.7ms | Allocations: 660)
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 5494)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-05-01 22:48:36 +0300
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+Completed 200 OK in 26ms (Views: 15.6ms | ActiveRecord: 1.1ms | Allocations: 22314)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2023-05-01 22:48:39 +0300
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `show'
+Completed 200 OK in 30ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 2260)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-05-01 22:48:42 +0300
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 1522)
+
+
+Started GET "/signup" for 127.0.0.1 at 2023-05-01 22:53:59 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  
+Started GET "/sign-up" for 127.0.0.1 at 2023-05-01 22:54:19 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/sign-up"):
+  
+Started POST "/signup" for 127.0.0.1 at 2023-05-01 22:54:26 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fbe28d31010>, params: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "zoro"], ["password_digest", "[FILTERED]"], ["email", "zoro@gmail.com"], ["user_type", 0], ["created_at", "2023-05-01 19:54:26.829579"], ["updated_at", "2023-05-01 19:54:26.829579"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 337ms (Views: 0.2ms | ActiveRecord: 10.0ms | Allocations: 3419)
+
+
+Started POST "/signup" for 127.0.0.1 at 2023-05-01 22:54:58 +0300
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fbe28b8f860>, params: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "zoro"], ["password_digest", "[FILTERED]"], ["email", "zoro@gmail.com"], ["user_type", 0], ["created_at", "2023-05-01 19:54:58.760052"], ["updated_at", "2023-05-01 19:54:58.760052"]]
+  ↳ app/controllers/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (34.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:21:in `create'
+Completed 201 Created in 280ms (Views: 1.7ms | ActiveRecord: 35.7ms | Allocations: 3861)
+
+
+Started GET "/me" for 127.0.0.1 at 2023-05-01 22:58:18 +0300
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 451)
+
+
+Started GET "//me" for 127.0.0.1 at 2023-05-01 22:58:34 +0300
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 423)
+
+
+Started GET "/me" for 127.0.0.1 at 2023-05-01 22:58:42 +0300
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 423)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-05-01 22:59:15 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+Filter chain halted as :authorize_unauthenticated rendered or redirected
+Completed 422 Unprocessable Entity in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1195)
+
+
+Started POST "/logout" for 127.0.0.1 at 2023-05-01 22:59:37 +0300
+Processing by SessionsController#destroy as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 230)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-05-01 22:59:54 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "zoro"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 250ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1600)
+
+
+Started POST "/me" for 127.0.0.1 at 2023-05-01 23:00:20 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/me"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-05-01 23:00:24 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+Filter chain halted as :authorize_unauthenticated rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 672)
+
+
+Started GET "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:10:14 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RedFlagRecordsController#index as */*
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 26ms (Views: 17.5ms | ActiveRecord: 1.1ms | Allocations: 24252)
+
+
+Started GET "/red_flag_records/1" for 127.0.0.1 at 2023-05-01 23:10:46 +0300
+Processing by RedFlagRecordsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mRedFlagRecord Load (0.9ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:17:in `show'
+Completed 200 OK in 50ms (Views: 2.7ms | ActiveRecord: 0.9ms | Allocations: 3908)
+
+
+Started POST "/red_flag_records/1" for 127.0.0.1 at 2023-05-01 23:11:30 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/red_flag_records/1"):
+  
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:11:35 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 90)
+
+
+Started GET "/me" for 127.0.0.1 at 2023-05-01 23:11:47 +0300
+Processing by UsersController#show as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "user"=>{"username"=>"zoro", "email"=>"zoro@gmail.com"}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 604)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-05-01 23:11:55 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+Filter chain halted as :authorize_unauthenticated rendered or redirected
+Completed 422 Unprocessable Entity in 33ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 15633)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:12:01 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-05-01 23:12:23 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com", "session"=>{"username"=>"zoro", "password"=>"[FILTERED]", "email"=>"zoro@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "zoro"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 211ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1541)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:12:27 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:12:47 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 83)
+
+
+Started POST "/red_flag_record" for 127.0.0.1 at 2023-05-01 23:15:51 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/red_flag_record"):
+  
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:15:55 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"}}
+Filter chain halted as :verify_auth rendered or redirected
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 155)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:16:03 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"}}
+Completed 422 Unprocessable Entity in 322ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 373495)
+
+
+Started POST "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:16:36 +0300
+Processing by RedFlagRecordsController#create as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "status"=>"under_investigation", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `create'
+  [1m[36mRedFlagRecord Create (0.5ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Karau 2"], ["description", "Traffic officers taking bribes "], ["latitude", -20.044345], ["longitude", -150.674892], ["status", 0], ["image_url", "https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"], ["user_id", 2], ["created_at", "2023-05-01 20:16:36.936254"], ["updated_at", "2023-05-01 20:16:36.936254"]]
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:38:in `create'
+Completed 201 Created in 71ms (Views: 0.5ms | ActiveRecord: 10.8ms | Allocations: 23047)
+
+
+Started PUT "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:17:13 +0300
+  
+ActionController::RoutingError (No route matches [PUT] "/red_flag_records"):
+  
+Started GET "/red_flag_records" for 127.0.0.1 at 2023-05-01 23:17:30 +0300
+Processing by RedFlagRecordsController#index as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+  [1m[36mRedFlagRecord Load (0.3ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records"[0m
+  ↳ app/controllers/red_flag_records_controller.rb:12:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms | Allocations: 2527)
+
+
+Started PUT "/red_flag_records/10" for 127.0.0.1 at 2023-05-01 23:17:38 +0300
+Processing by RedFlagRecordsController#update as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "id"=>"10", "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+  [1m[36mRedFlagRecord Load (0.2ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:48:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:55:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:55:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/red_flag_records_controller.rb:55:in `update'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3200)
+
+
+Started DELETE "/red_flag_records/10" for 127.0.0.1 at 2023-05-01 23:17:58 +0300
+Processing by RedFlagRecordsController#destroy as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "id"=>"10", "red_flag_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+  [1m[36mRedFlagRecord Load (0.1ms)[0m  [1m[34mSELECT "red_flag_records".* FROM "red_flag_records" WHERE "red_flag_records"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/red_flag_records_controller.rb:67:in `destroy'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 2062)
+
+
+Started GET "/intervention_records" for 127.0.0.1 at 2023-05-01 23:18:19 +0300
+Processing by InterventionRecordsController#index as */*
+  Parameters: {"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2, "intervention_record"=>{"title"=>"Corrupt Karau 2", "description"=>"Traffic officers taking bribes ", "latitude"=>"-20.044345", "longitude"=>"-150.674892", "image_url"=>"https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1", "user_id"=>2}}
+  [1m[36mInterventionRecord Load (0.7ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records"[0m
+  ↳ app/controllers/intervention_records_controller.rb:11:in `index'
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 2.4ms | Allocations: 4067)
+
+
+Started GET "/intervention_records/1" for 127.0.0.1 at 2023-05-01 23:18:41 +0300
+Processing by InterventionRecordsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:17:in `show'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1229)
+
+
+Started POST "/intervention_records" for 127.0.0.1 at 2023-05-01 23:19:46 +0300
+Processing by InterventionRecordsController#create as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:24:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:24:in `create'
+  [1m[36mInterventionRecord Create (0.3ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Intervention Record"], ["description", "Local hospital in bad shape"], ["latitude", -44.044345], ["longitude", -101.674892], ["status", 0], ["image_url", "https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg"], ["user_id", 1], ["created_at", "2023-05-01 20:19:46.807716"], ["updated_at", "2023-05-01 20:19:46.807716"]]
+  ↳ app/controllers/intervention_records_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:24:in `create'
+Completed 201 Created in 29ms (Views: 0.3ms | ActiveRecord: 10.9ms | Allocations: 11445)
+
+
+Started PUT "/intervention_records/8" for 127.0.0.1 at 2023-05-01 23:20:11 +0300
+Processing by InterventionRecordsController#update as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "id"=>"8", "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:38:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:45:in `update'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3194)
+
+
+Started DELETE "/intervention_records/8" for 127.0.0.1 at 2023-05-01 23:20:26 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "id"=>"8", "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mInterventionRecord Load (0.2ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:56:in `destroy'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+  [1m[36mInterventionRecord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "intervention_records" WHERE "intervention_records"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+  [1m[36mTRANSACTION (21.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+Completed 204 No Content in 31ms (ActiveRecord: 22.2ms | Allocations: 3297)
+
+
+Started DELETE "/intervention_records/8" for 127.0.0.1 at 2023-05-01 23:21:27 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "id"=>"8", "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:56:in `destroy'
+Completed 404 Not Found in 3ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 1412)
+
+
+Started DELETE "/intervention_records/9" for 127.0.0.1 at 2023-05-01 23:21:33 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "id"=>"9", "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:56:in `destroy'
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 789)
+
+
+Started DELETE "/intervention_records/7" for 127.0.0.1 at 2023-05-01 23:21:40 +0300
+Processing by InterventionRecordsController#destroy as */*
+  Parameters: {"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1, "id"=>"7", "intervention_record"=>{"title"=>"Intervention Record", "description"=>"Local hospital in bad shape", "latitude"=>"-44.044345", "longitude"=>"-101.674892", "status"=>"under_investigation", "image_url"=>"https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg", "user_id"=>1}}
+  [1m[36mInterventionRecord Load (0.1ms)[0m  [1m[34mSELECT "intervention_records".* FROM "intervention_records" WHERE "intervention_records"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/intervention_records_controller.rb:56:in `destroy'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:73:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+  [1m[36mInterventionRecord Destroy (0.3ms)[0m  [1m[31mDELETE FROM "intervention_records" WHERE "intervention_records"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+  [1m[36mTRANSACTION (28.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/intervention_records_controller.rb:59:in `destroy'
+Completed 204 No Content in 48ms (ActiveRecord: 29.8ms | Allocations: 9933)
+
+
+Started DELETE "/intervention_records" for 127.0.0.1 at 2023-05-01 23:21:50 +0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/intervention_records"):
+  
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-01 20:38:00.749805"], ["updated_at", "2023-05-01 20:38:00.749805"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-05-01 20:38:00.756459"], ["updated_at", "2023-05-01 20:38:00.756459"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "intervention_records"[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "red_flag_records"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "description" text, "latitude" decimal(10,6), "longitude" decimal(10,6), "status" integer DEFAULT 0, "image_url" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password_digest" text, "email" text, "user_type" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aintervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aintervention_records_on_user_id" ON "aintervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aintervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "intervention_records"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "intervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "intervention_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_8bdfed0b94"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_intervention_records_on_user_id" ON "intervention_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "aintervention_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aintervention_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ared_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_ared_flag_records_on_user_id" ON "ared_flag_records" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ared_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "red_flag_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "red_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "red_flag_records" ("id" integer NOT NULL PRIMARY KEY, "title" text DEFAULT NULL, "description" text DEFAULT NULL, "latitude" decimal(10,6) DEFAULT NULL, "longitude" decimal(10,6) DEFAULT NULL, "status" integer DEFAULT 0, "image_url" text DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_34b1c3d8ff"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_red_flag_records_on_user_id" ON "red_flag_records" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at")
+                     SELECT "id","title","description","latitude","longitude","status","image_url","user_id","created_at","updated_at" FROM "ared_flag_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ared_flag_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230419102100)[0m
+  [1m[35m (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230419101626),
+(20230419102017);
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-01 20:38:00.818795"], ["updated_at", "2023-05-01 20:38:00.818795"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-05-01 20:38:00.824053"], ["key", "environment"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "4be0a1ecd3a8e8bb7244ec572d0a826834e61da5"], ["created_at", "2023-05-01 20:38:00.829099"], ["updated_at", "2023-05-01 20:38:00.829099"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "ceola"], ["password_digest", "[FILTERED]"], ["email", "serita_pouros@wolff.example"], ["user_type", 0], ["created_at", "2023-05-01 20:38:01.069153"], ["updated_at", "2023-05-01 20:38:01.069153"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wilmer"], ["password_digest", "[FILTERED]"], ["email", "chung@barrows.example"], ["user_type", 0], ["created_at", "2023-05-01 20:38:01.073961"], ["updated_at", "2023-05-01 20:38:01.073961"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "andre"], ["password_digest", "[FILTERED]"], ["email", "efren.flatley@hermann.example"], ["user_type", 0], ["created_at", "2023-05-01 20:38:01.078819"], ["updated_at", "2023-05-01 20:38:01.078819"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "adrianna"], ["password_digest", "[FILTERED]"], ["email", "romeo.kerluke@waters.example"], ["user_type", 0], ["created_at", "2023-05-01 20:38:01.083797"], ["updated_at", "2023-05-01 20:38:01.083797"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "user_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "joshua.wilkinson"], ["password_digest", "[FILTERED]"], ["email", "gilda.gusikowski@donnelly.example"], ["user_type", 0], ["created_at", "2023-05-01 20:38:01.088464"], ["updated_at", "2023-05-01 20:38:01.088464"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Karau"], ["description", "Traffic officers taking bribes "], ["latitude", -20.044345], ["longitude", -150.674892], ["status", 0], ["image_url", "https://i0.wp.com/biznakenya.com/wp-content/uploads/2016/05/1153641.jpg?fit=768%2C576&ssl=1"], ["user_id", 3], ["created_at", "2023-05-01 20:38:01.108609"], ["updated_at", "2023-05-01 20:38:01.108609"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lack of Social amenities"], ["description", "Local hospital in bad shape"], ["latitude", -44.044345], ["longitude", -101.674892], ["status", 0], ["image_url", "https://s.hdnux.com/photos/41/77/61/8911959/12/1200x0.jpg"], ["user_id", 2], ["created_at", "2023-05-01 20:38:01.120205"], ["updated_at", "2023-05-01 20:38:01.120205"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bribing of Health Inspector"], ["description", "Despite several irregularities during Inspection the manager and Health inspector agreed to a compromise"], ["latitude", -19.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 5], ["created_at", "2023-05-01 20:38:01.125816"], ["updated_at", "2023-05-01 20:38:01.125816"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Stalled Stadium Construction"], ["description", "Workers and equipment were only seen at the site for a month."], ["latitude", -50.044345], ["longitude", -178.674892], ["status", 0], ["image_url", "https://www.kenyans.co.ke/files/styles/article_style/public/images/media/Kamariny%20stadium.jpg?itok=4whBnFtL"], ["user_id", 5], ["created_at", "2023-05-01 20:38:01.131572"], ["updated_at", "2023-05-01 20:38:01.131572"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corrupt Judicial system"], ["description", "The judge in my case was spotted with the defendant outside courtroom."], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://media.istockphoto.com/id/670974060/photo/at-the-doctor.jpg?s=612x612&w=0&k=20&c=d26UyxnnAhaHxzcW9rQDkZehUmf6P27IjzoOELMBaMk="], ["user_id", 5], ["created_at", "2023-05-01 20:38:01.137784"], ["updated_at", "2023-05-01 20:38:01.137784"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Dilapidated Road Work"], ["description", "Funds were allocated for the re-tarmacking of our village road which is in a sorry state still."], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.roadex.org/wp-content/uploads/elearning/environmental/4/421a.jpg"], ["user_id", 5], ["created_at", "2023-05-01 20:38:01.143329"], ["updated_at", "2023-05-01 20:38:01.143329"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Forceful Eviction"], ["description", "A developer came with Equipment and Personell and demolished businesses"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://gdb.voanews.com/C1DCC61C-A18D-47E5-810A-DB414509157B_cx0_cy9_cw0_w1597_n_r1_st_s.jpg"], ["user_id", 2], ["created_at", "2023-05-01 20:38:01.149287"], ["updated_at", "2023-05-01 20:38:01.149287"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.2ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Banditry"], ["description", "Heavy Clashes between two pastoralists communities that are heavily armed"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://www.aljazeera.com/wp-content/uploads/2016/12/20b77a41a394462b9a38f1e4c7883a81_18.jpeg?resize=770%2C513&quality=80"], ["user_id", 5], ["created_at", "2023-05-01 20:38:01.154832"], ["updated_at", "2023-05-01 20:38:01.154832"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRedFlagRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "red_flag_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Embezzlement of funds"], ["description", "Company CEO misappropriated customer pensions"], ["latitude", -30.044345], ["longitude", -108.674892], ["status", 0], ["image_url", "https://pointofview.net/wp-content/uploads/2022/11/FTX-crash-1024x577.png"], ["user_id", 2], ["created_at", "2023-05-01 20:38:01.160908"], ["updated_at", "2023-05-01 20:38:01.160908"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Pluck (0.1ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mInterventionRecord Create (0.1ms)[0m  [1m[32mINSERT INTO "intervention_records" ("title", "description", "latitude", "longitude", "status", "image_url", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Public Hazard"], ["description", " Endangerment of  public safety and life"], ["latitude", -60.044345], ["longitude", -148.674892], ["status", 0], ["image_url", "https://i0.wp.com/www.k24tv.co.ke/wp-content/uploads/2022/03/Building-in-Regen.jpg?w=730&ssl=1"], ["user_id", 2], ["created_at", "2023-05-01 20:38:01.166341"], ["updated_at", "2023-05-01 20:38:01.166341"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
